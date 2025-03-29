@@ -1,475 +1,430 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Маркетплейс — Найбільший онлайн-ринок України</title>
-  <meta name="description" content="Маркетплейс — найбільший онлайн-ринок України, де мільйони товарів від продавців з усієї країни. Від зубної щітки до електроніки — у нас є все!">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Стилі -->
+  <title>Marktplatz | Deutsch-Englischer Marktplatz</title>
   <style>
-    /* Базові стилі */
-    * {
+    :root {
+      --primary: #4a2b82;
+      --secondary: #5d3d9e;
+      --accent: #e53935;
+      --light: #f8f9fa;
+      --dark: #2d2d2d;
+      --gray: #6c757d;
+    }
+    
+    /* Language Switch Styles */
+    .lang-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .lang-btn {
+      background: white;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 5px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin: 0 5px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    .lang-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+    
+    /* Language Content */
+    [lang="de"] { display: none; }
+    [lang="en"] { display: none; }
+    
+    body.de [lang="de"] { display: block; }
+    body.en [lang="en"] { display: block; }
+    
+    /* Base Styles */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Arial', sans-serif;
     }
     
-    body {
-      line-height: 1.6;
-      color: #333;
-      background-color: #f9f9f9;
-    }
-    
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    
-    /* Шапка сайту */
-    .site-header {
-      background-color: #4a2b82;
-      color: white;
-      padding: 15px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    .main-header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     
     .header-container {
       display: flex;
-      justify-content: space-between;
       align-items: center;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 1rem;
+      position: relative;
     }
     
     .logo img {
       height: 40px;
+      width: auto;
     }
     
-    /* Пошук */
     .search-form {
-      display: flex;
-      flex-grow: 1;
-      max-width: 600px;
-      margin: 0 20px;
+      flex: 1;
+      margin: 0 2rem;
+      position: relative;
     }
     
     .search-input {
-      flex-grow: 1;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 4px 0 0 4px;
-      font-size: 16px;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--light);
+      border-radius: 50px;
+      font-size: 1rem;
+      transition: all 0.3s;
     }
     
-    .search-button {
-      padding: 0 20px;
-      background-color: #5d3d9e;
-      color: white;
-      border: none;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    
-    /* Навігація */
-    .main-nav {
-      background-color: #5d3d9e;
-    }
-    
-    .nav-list {
+    .hero-banner {
+      height: 60vh;
+      min-height: 500px;
+      background: 
+        linear-gradient(135deg, rgba(74,43,130,0.8) 0%, rgba(93,61,158,0.9) 100%),
+        url('images/hero-banner.jpg') center/cover no-repeat;
       display: flex;
-      justify-content: center;
-      list-style: none;
-      max-width: 1200px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-      padding: 10px 0;
-    }
-    
-    .nav-item {
-      margin: 0 15px;
-    }
-    
-    .nav-link {
-      color: white;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
-    
-    .nav-link:hover {
-      color: #d1c4e9;
-    }
-    
-    /* Банер */
-    .main-banner {
-      width: 100%;
-      overflow: hidden;
-    }
-    
-    .banner-image {
-      width: 100%;
-      max-height: 400px;
-      object-fit: cover;
-    }
-    
-    /* Секції */
-    .section {
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .section-title {
-      margin-bottom: 30px;
-      color: #333;
-      font-size: 28px;
-      text-align: center;
-    }
-    
-    /* Категорії */
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    
-    .category-card {
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-    
-    .category-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .category-image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    
-    .category-name {
-      display: block;
-      padding: 15px;
-      text-align: center;
-      font-weight: bold;
-      color: #333;
-    }
-    
-    /* Пропозиції */
-    .offer-card {
-      background: white;
-      border-radius: 8px;
-      padding: 15px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    }
-    
-    .offer-image {
-      width: 100%;
-      height: 160px;
-      object-fit: contain;
-      margin-bottom: 15px;
-    }
-    
-    .offer-title {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-    
-    .offer-price {
-      color: #e53935;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-    
-    .offer-button {
-      display: block;
-      text-align: center;
-      background-color: #4a2b82;
-      color: white;
-      padding: 8px 0;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
-    
-    .offer-button:hover {
-      background-color: #5d3d9e;
-    }
-    
-    /* Виробники */
-    .brands-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin-top: 20px;
-    }
-    
-    .brand-logo {
-      height: 50px;
-      object-fit: contain;
-      opacity: 0.8;
-      transition: opacity 0.3s;
-    }
-    
-    .brand-logo:hover {
-      opacity: 1;
-    }
-    
-    /* Для продавців */
-    .seller-section {
-      background-color: #4a2b82;
-      color: white;
-      text-align: center;
-      padding: 50px 20px;
-    }
-    
-    .seller-title {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-    
-    .seller-text {
-      max-width: 600px;
-      margin: 0 auto 30px;
-      font-size: 18px;
-    }
-    
-    .seller-button {
-      display: inline-block;
-      background-color: white;
-      color: #4a2b82;
-      padding: 12px 30px;
-      border-radius: 4px;
-      font-weight: bold;
-      transition: transform 0.3s;
-    }
-    
-    .seller-button:hover {
-      transform: scale(1.05);
-    }
-    
-    /* Підвал */
-    .site-footer {
-      background-color: #2d2d2d;
-      color: #ddd;
-      padding: 50px 20px 30px;
-    }
-    
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .footer-columns {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      margin-bottom: 40px;
-    }
-    
-    .footer-column-title {
-      color: white;
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-    
-    .footer-links {
-      list-style: none;
-    }
-    
-    .footer-link {
-      margin-bottom: 10px;
-    }
-    
-    .footer-link a {
-      color: #aaa;
-      transition: color 0.3s;
-    }
-    
-    .footer-link a:hover {
-      color: white;
-    }
-    
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding-top: 30px;
-      border-top: 1px solid #444;
+      color: white;
+      text-align: center;
     }
     
-    .copyright {
-      color: #777;
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
     }
     
-    .payment-methods {
-      display: flex;
-      gap: 15px;
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     
-    .payment-icon {
-      height: 25px;
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 15px;
-    }
-    
-    .social-icon {
-      height: 30px;
-      opacity: 0.7;
+    .gallery-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
       transition: opacity 0.3s;
     }
     
-    .social-icon:hover {
-      opacity: 1;
-    }
-    
-    /* Адаптивність */
     @media (max-width: 768px) {
       .header-container {
         flex-direction: column;
       }
-      
       .search-form {
+        margin: 1rem 0;
         width: 100%;
-        margin: 15px 0;
       }
-      
-      .nav-list {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .nav-item {
-        margin: 5px 0;
-      }
-      
-      .footer-bottom {
-        flex-direction: column;
-        gap: 20px;
+      .hero-banner {
+        height: 400px;
       }
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
-  <!-- Шапка -->
-  <header class="site-header">
+<body class="de">
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button class="lang-btn de-btn active" onclick="switchLanguage('de')">DE</button>
+    <button class="lang-btn en-btn" onclick="switchLanguage('en')">EN</button>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
     <div class="header-container">
       <div class="logo">
         <a href="/">
-          <img src="images/logo.png" alt="Маркетплейс">
+          <img src="images/logo.svg" alt="Marktplatz Logo" loading="lazy">
         </a>
       </div>
       
-      <form class="search-form" action="/search" method="get">
-        <input type="search" class="search-input" placeholder="Я шукаю..." name="q" autocomplete="off">
-        <button type="submit" class="search-button">Знайти</button>
+      <form class="search-form" action="/search">
+        <div lang="de">
+          <input type="search" class="search-input" placeholder="Was suchen Sie heute?" aria-label="Suche">
+        </div>
+        <div lang="en">
+          <input type="search" class="search-input" placeholder="What are you looking for?" aria-label="Search">
+        </div>
+        <button type="submit" class="search-btn" aria-label="Search button">
+          <i class="fas fa-search"></i>
+        </button>
       </form>
       
-      <div class="user-actions">
-        <a href="/account" class="user-link">Мій кабінет</a>
-        <a href="/cart" class="cart-link">Кошик</a>
-      </div>
+      <nav class="user-nav">
+        <div lang="de">
+          <a href="/account" class="nav-link">
+            <i class="far fa-user"></i>
+            <span>Mein Konto</span>
+          </a>
+          <a href="/cart" class="nav-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Warenkorb</span>
+          </a>
+        </div>
+        <div lang="en">
+          <a href="/account" class="nav-link">
+            <i class="far fa-user"></i>
+            <span>My Account</span>
+          </a>
+          <a href="/cart" class="nav-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+          </a>
+        </div>
+      </nav>
     </div>
   </header>
-  
-  <!-- Навігація -->
-  <nav class="main-nav">
-    <ul class="nav-list">
-      <li class="nav-item"><a href="/health-beauty" class="nav-link">Здоров'я та краса</a></li>
-      <li class="nav-item"><a href="/home-garden" class="nav-link">Дім і сад</a></li>
-      <li class="nav-item"><a href="/clothing-shoes" class="nav-link">Одяг та взуття</a></li>
-      <li class="nav-item"><a href="/electronics" class="nav-link">Електроніка</a></li>
-      <li class="nav-item"><a href="/kids-baby" class="nav-link">Діти та малюки</a></li>
-      <li class="nav-item"><a href="/auto-moto" class="nav-link">Авто та мото</a></li>
-      <li class="nav-item"><a href="/sports" class="nav-link">Спорт</a></li>
-      <li class="nav-item"><a href="/food" class="nav-link">Продукти</a></li>
-    </ul>
-  </nav>
-  
-  <!-- Головний банер -->
-  <div class="main-banner">
-    <img src="images/main-banner.jpg" alt="Спеціальні пропозиції" class="banner-image">
-  </div>
-  
-  <!-- Популярні категорії -->
-  <section class="section">
-    <h2 class="section-title">Популярні категорії</h2>
-    <div class="categories-grid">
-      <a href="/ukrainian-brands" class="category-card">
-        <img src="images/ukrainian-brands.jpg" alt="Українські бренди" class="category-image">
-        <span class="category-name">Українські бренди</span>
-      </a>
-      <a href="/eco-products" class="category-card">
-        <img src="images/eco-products.jpg" alt="Еко-продукти" class="category-image">
-        <span class="category-name">Еко-продукти</span>
-      </a>
-      <a href="/home-appliances" class="category-card">
-        <img src="images/home-appliances.jpg" alt="Побутова техніка" class="category-image">
-        <span class="category-name">Побутова техніка</span>
-      </a>
-      <a href="/tools" class="category-card">
-        <img src="images/tools.jpg" alt="Інструменти" class="category-image">
-        <span class="category-name">Інструменти</span>
-      </a>
-    </div>
-  </section>
-  
-  <!-- Спеціальні пропозиції -->
-  <section class="section">
-    <h2 class="section-title">Спеціальні пропозиції</h2>
-    <div class="categories-grid">
-      <div class="offer-card">
-        <img src="images/offer1.jpg" alt="Бутова техніка Bosch" class="offer-image">
-        <h3 class="offer-title">Побутова техніка Bosch</h3>
-        <p class="offer-price">Від 5 999 ₴</p>
-        <a href="/offer1" class="offer-button">До пропозиції</a>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+      <div lang="de">
+        <h1 style="font-size: 3rem; margin-bottom: 1rem;">Sommerschlussverkauf</h1>
+        <p style="font-size: 1.5rem; margin-bottom: 2rem;">Bis zu 50% Rabatt auf ausgewählte Artikel</p>
+        <a href="/angebote" style="padding: 1rem 2rem; background: white; color: var(--primary); border-radius: 50px; font-weight: bold; display: inline-block; text-decoration: none;">
+          Jetzt entdecken
+        </a>
       </div>
-      <div class="offer-card">
-        <img src="images/offer2.jpg" alt="Спортивний одяг" class="offer-image">
-        <h3 class="offer-title">Спортивний одяг</h3>
-        <p class="offer-price">До -40% знижки</p>
-        <a href="/offer2" class="offer-button">До пропозиції</a>
-      </div>
-      <div class="offer-card">
-        <img src="images/offer3.jpg" alt="Пилосос Samsung" class="offer-image">
-        <h3 class="offer-title">Пилосос Samsung</h3>
-        <p class="offer-price">Тільки 8 499 ₴</p>
-        <a href="/offer3" class="offer-button">До пропозиції</a>
+      <div lang="en">
+        <h1 style="font-size: 3rem; margin-bottom: 1rem;">Summer Sale</h1>
+        <p style="font-size: 1.5rem; margin-bottom: 2rem;">Up to 50% off selected items</p>
+        <a href="/offers" style="padding: 1rem 2rem; background: white; color: var(--primary); border-radius: 50px; font-weight: bold; display: inline-block; text-decoration: none;">
+          Discover Now
+        </a>
       </div>
     </div>
   </section>
-  
-  <!-- Українські виробники -->
-  <section class="section">
-    <h2 class="section-title">Українські виробники</h2>
-    <div class="brands-container">
-      <img src="images/logo-ukrbud.png" alt="Укрбуд" class="brand-logo">
-      <img src="images/logo-vesna.png" alt="Весна" class="brand-logo">
-      <img src="images/logo-roshen.png" alt="Roshen" class="brand-logo">
-      <img src="images/logo-ukrposhta.png" alt="Укрпошта" class="brand-logo">
-      <img src="images/logo-nova-poshta.png" alt="Нова Пошта" class="brand-logo">
+
+  <!-- Categories -->
+  <section style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
+    <div lang="de">
+      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Beliebte Kategorien</h2>
+    </div>
+    <div lang="en">
+      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Popular Categories</h2>
+    </div>
+    
+    <div class="image-gallery">
+      <a href="/elektronik" class="category-card">
+        <img src="images/electronics.jpg" class="gallery-image" loading="lazy">
+        <div style="padding: 1rem; text-align: center; background: white;">
+          <div lang="de">
+            <h3>Elektronik</h3>
+            <p>Über 10.000 Artikel</p>
+          </div>
+          <div lang="en">
+            <h3>Electronics</h3>
+            <p>Over 10,000 items</p>
+          </div>
+        </div>
+      </a>
+      
+      <a href="/mode" class="category-card">
+        <img src="images/fashion.jpg" class="gallery-image" loading="lazy">
+        <div style="padding: 1rem; text-align: center; background: white;">
+          <div lang="de">
+            <h3>Mode</h3>
+            <p>Neue Kollektion</p>
+          </div>
+          <div lang="en">
+            <h3>Fashion</h3>
+            <p>New collection</p>
+          </div>
+        </div>
+      </a>
+      
+      <a href="/haushalt" class="category-card">
+        <img src="images/home.jpg" class="gallery-image" loading="lazy">
+        <div style="padding: 1rem; text-align: center; background: white;">
+          <div lang="de">
+            <h3>Haushalt</h3>
+            <p>Praktische Lösungen</p>
+          </div>
+          <div lang="en">
+            <h3>Home</h3>
+            <p>Practical solutions</p>
+          </div>
+        </div>
+      </a>
     </div>
   </section>
-  
-  <!-- Для продавців -->
-  <section class="seller-section">
-    <h2 class="seller-title">Продавайте на Маркетплейсі</h2>
-    <p class="seller-text">Приєднуйтесь до найбільшої торговельної платформи України та отримуйте доступ до мільйонів покупців</p>
-    <a href="/become-seller" class="seller-button">Стати продавцем</a>
+
+  <!-- Products -->
+  <section style="background: white; padding: 4rem 2rem;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div lang="de">
+        <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Bestseller</h2>
+      </div>
+      <div lang="en">
+        <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Bestsellers</h2>
+      </div>
+      
+      <div class="image-gallery">
+        <div class="product-card">
+          <img src="images/washing-machine.jpg" class="gallery-image" loading="lazy">
+          <div style="padding: 1.5rem;">
+            <div lang="de">
+              <h3 style="margin-bottom: 0.5rem;">Bosch Waschmaschine</h3>
+              <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
+                € 599,00
+              </div>
+              <div style="color: var(--gray); margin-bottom: 1rem;">
+                Kostenloser Versand
+              </div>
+            </div>
+            <div lang="en">
+              <h3 style="margin-bottom: 0.5rem;">Bosch Washing Machine</h3>
+              <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
+                € 599.00
+              </div>
+              <div style="color: var(--gray); margin-bottom: 1rem;">
+                Free shipping
+              </div>
+            </div>
+            <button style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px;">
+              <span lang="de">In den Warenkorb</span>
+              <span lang="en">Add to Cart</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <img src="images/smartwatch.jpg" class="gallery-image" loading="lazy">
+          <div style="padding: 1.5rem;">
+            <div lang="de">
+              <h3 style="margin-bottom: 0.5rem;">Smartwatch Pro</h3>
+              <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
+                € 199,99
+              </div>
+              <div style="color: var(--gray); margin-bottom: 1rem;">
+                Versand in 1-2 Tagen
+              </div>
+            </div>
+            <div lang="en">
+              <h3 style="margin-bottom: 0.5rem;">Smartwatch Pro</h3>
+              <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
+                € 199.99
+              </div>
+              <div style="color: var(--gray); margin-bottom: 1rem;">
+                Ships in 1-2 days
+              </div>
+            </div>
+            <button style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px;">
+              <span lang="de">In den Warenkorb</span>
+              <span lang="en">Add to Cart</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
-  
-  <!-- Підвал -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-columns">
-        <div class="
+
+  <!-- Footer -->
+  <footer style="background: var(--dark); color: white; padding: 4rem 2rem;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+      <div>
+        <h3 style="margin-bottom: 1.5rem;">
+          <span lang="de">Einkaufen</span>
+          <span lang="en">Shop</span>
+        </h3>
+        <ul style="list-style: none;">
+          <li style="margin-bottom: 0.5rem;">
+            <a href="#" style="color: #aaa; text-decoration: none;">
+              <span lang="de">Alle Kategorien</span>
+              <span lang="en">All Categories</span>
+            </a>
+          </li>
+          <li style="margin-bottom: 0.5rem;">
+            <a href="#" style="color: #aaa; text-decoration: none;">
+              <span lang="de">Angebote</span>
+              <span lang="en">Deals</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 style="margin-bottom: 1.5rem;">
+          <span lang="de">Service</span>
+          <span lang="en">Service</span>
+        </h3>
+        <ul style="list-style: none;">
+          <li style="margin-bottom: 0.5rem;">
+            <a href="#" style="color: #aaa; text-decoration: none;">
+              <span lang="de">Kundenservice</span>
+              <span lang="en">Customer Service</span>
+            </a>
+          </li>
+          <li style="margin-bottom: 0.5rem;">
+            <a href="#" style="color: #aaa; text-decoration: none;">
+              <span lang="de">Versand</span>
+              <span lang="en">Shipping</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 style="margin-bottom: 1.5rem;">
+          <span lang="de">Unternehmen</span>
+          <span lang="en">Company</span>
+        </h3>
+        <ul style="list-style: none;">
+          <li style="margin-bottom: 0.5rem;">
+            <a href="#" style="color: #aaa; text-decoration: none;">
+              <span lang="de">Über uns</span>
+              <span lang="en">About Us</span>
+            </a>
+          </li>
+          <li style="margin-bottom: 0.5rem;">
+            <a href="#" style="color: #aaa; text-decoration: none;">
+              <span lang="de">Karriere</span>
+              <span lang="en">Careers</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div style="max-width: 1200px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid #444; display: flex; justify-content: space-between; align-items: center;">
+      <div style="color: #777;">
+        <span lang="de">© 2023 Marktplatz GmbH. Alle Rechte vorbehalten.</span>
+        <span lang="en">© 2023 Marktplatz GmbH. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function switchLanguage(lang) {
+      document.body.className = lang;
+      localStorage.setItem('preferredLang', lang);
+      
+      // Update active button
+      document.querySelector('.de-btn').classList.toggle('active', lang === 'de');
+      document.querySelector('.en-btn').classList.toggle('active', lang === 'en');
+    }
+    
+    // Check for saved preference
+    const savedLang = localStorage.getItem('preferredLang') || 'de';
+    switchLanguage(savedLang);
+  </script>
+</body>
+</html>
