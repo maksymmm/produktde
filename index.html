@@ -1,43 +1,38 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="uk">
 <head>
-  <meta charset="utf-8">
-  <title>Marktplatz — Der größte Marktplatz Deutschlands</title>
-  <meta name="description" content="Marktplatz — Der größte Marktplatz Deutschlands, wo 100 Millionen Produkte von Verkäufern aus dem ganzen Land verkauft werden. Alles — von der Zahnbürste bis zur kugelsicheren Weste gibt es auf Marktplatz">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Маркетплейс — Найбільший онлайн-ринок України</title>
+  <meta name="description" content="Маркетплейс — найбільший онлайн-ринок України, де мільйони товарів від продавців з усієї країни. Від зубної щітки до електроніки — у нас є все!">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Open Graph / Social Media Meta Tags -->
-  <meta property="og:title" content="Marktplatz — Der größte Marktplatz Deutschlands">
-  <meta property="og:description" content="Marktplatz — Der größte Marktplatz Deutschlands, wo 100 Millionen Produkte von Verkäufern aus dem ganzen Land verkauft werden.">
-  <meta property="og:site_name" content="marktplatz.de">
-  <meta property="og:image" content="https://marktplatz.de/static/images/marktplatz-social.jpg">
-  
-  <!-- Favicons (using relative paths that work on GitHub) -->
-  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
-  
-  <!-- CSS -->
+  <!-- Стилі -->
   <style>
-    /* Basic reset */
+    /* Базові стилі */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
     }
     
     body {
       line-height: 1.6;
       color: #333;
-      background-color: #f5f5f5;
+      background-color: #f9f9f9;
     }
     
-    /* Header styles */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    /* Шапка сайту */
     .site-header {
-      background-color: #7B04DF;
+      background-color: #4a2b82;
       color: white;
-      padding: 1rem;
+      padding: 15px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     
     .header-container {
@@ -46,376 +41,435 @@
       align-items: center;
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 20px;
     }
     
-    .logo-container img {
+    .logo img {
       height: 40px;
     }
     
-    /* Search form */
-    .search-container input {
-      padding: 0.5rem;
-      border: none;
-      border-radius: 4px 0 0 4px;
+    /* Пошук */
+    .search-form {
+      display: flex;
+      flex-grow: 1;
+      max-width: 600px;
+      margin: 0 20px;
     }
     
-    .search-container button {
-      padding: 0.5rem 1rem;
-      background-color: #5F3D94;
+    .search-input {
+      flex-grow: 1;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 16px;
+    }
+    
+    .search-button {
+      padding: 0 20px;
+      background-color: #5d3d9e;
       color: white;
       border: none;
       border-radius: 0 4px 4px 0;
       cursor: pointer;
+      font-weight: bold;
     }
     
-    /* Navigation */
-    .main-navigation {
-      background-color: #5F3D94;
-      padding: 0.5rem 0;
+    /* Навігація */
+    .main-nav {
+      background-color: #5d3d9e;
     }
     
-    .main-navigation ul {
+    .nav-list {
       display: flex;
       justify-content: center;
       list-style: none;
       max-width: 1200px;
       margin: 0 auto;
       flex-wrap: wrap;
+      padding: 10px 0;
     }
     
-    .main-navigation li {
-      margin: 0 1rem;
+    .nav-item {
+      margin: 0 15px;
     }
     
-    .main-navigation a {
+    .nav-link {
       color: white;
-      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
     }
     
-    /* Main content sections */
-    .main-banner img {
+    .nav-link:hover {
+      color: #d1c4e9;
+    }
+    
+    /* Банер */
+    .main-banner {
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .banner-image {
       width: 100%;
       max-height: 400px;
       object-fit: cover;
     }
     
-    section {
-      padding: 2rem 1rem;
+    /* Секції */
+    .section {
+      padding: 40px 20px;
       max-width: 1200px;
       margin: 0 auto;
     }
     
-    section h2 {
-      margin-bottom: 1.5rem;
+    .section-title {
+      margin-bottom: 30px;
       color: #333;
+      font-size: 28px;
+      text-align: center;
     }
     
-    /* Featured categories grid */
+    /* Категорії */
     .categories-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
     }
     
-    .category-item {
+    .category-card {
       background: white;
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
     
-    .category-item img {
+    .category-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .category-image {
       width: 100%;
-      height: 150px;
+      height: 180px;
       object-fit: cover;
     }
     
-    .category-item span {
+    .category-name {
       display: block;
-      padding: 1rem;
+      padding: 15px;
       text-align: center;
       font-weight: bold;
+      color: #333;
     }
     
-    /* Footer */
-    .site-footer {
-      background-color: #333;
+    /* Пропозиції */
+    .offer-card {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .offer-image {
+      width: 100%;
+      height: 160px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+    
+    .offer-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    
+    .offer-price {
+      color: #e53935;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    
+    .offer-button {
+      display: block;
+      text-align: center;
+      background-color: #4a2b82;
       color: white;
-      padding: 2rem 1rem;
+      padding: 8px 0;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .offer-button:hover {
+      background-color: #5d3d9e;
+    }
+    
+    /* Виробники */
+    .brands-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    
+    .brand-logo {
+      height: 50px;
+      object-fit: contain;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    
+    .brand-logo:hover {
+      opacity: 1;
+    }
+    
+    /* Для продавців */
+    .seller-section {
+      background-color: #4a2b82;
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    
+    .seller-title {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    .seller-text {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      font-size: 18px;
+    }
+    
+    .seller-button {
+      display: inline-block;
+      background-color: white;
+      color: #4a2b82;
+      padding: 12px 30px;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+    
+    .seller-button:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Підвал */
+    .site-footer {
+      background-color: #2d2d2d;
+      color: #ddd;
+      padding: 50px 20px 30px;
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
     
     .footer-columns {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      gap: 30px;
+      margin-bottom: 40px;
     }
     
-    .footer-column h3 {
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
+    .footer-column-title {
+      color: white;
+      font-size: 18px;
+      margin-bottom: 20px;
     }
     
-    .footer-column ul {
+    .footer-links {
       list-style: none;
     }
     
-    .footer-column li {
-      margin-bottom: 0.5rem;
+    .footer-link {
+      margin-bottom: 10px;
     }
     
-    .footer-column a {
-      color: #ccc;
-      text-decoration: none;
+    .footer-link a {
+      color: #aaa;
+      transition: color 0.3s;
+    }
+    
+    .footer-link a:hover {
+      color: white;
     }
     
     .footer-bottom {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1200px;
-      margin: 2rem auto 0;
-      padding-top: 2rem;
-      border-top: 1px solid #555;
+      padding-top: 30px;
+      border-top: 1px solid #444;
     }
     
-    .payment-methods img,
-    .social-media img {
+    .copyright {
+      color: #777;
+    }
+    
+    .payment-methods {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .payment-icon {
+      height: 25px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-icon {
       height: 30px;
-      margin: 0 0.5rem;
+      opacity: 0.7;
+      transition: opacity 0.3s;
     }
     
-    /* Responsive adjustments */
+    .social-icon:hover {
+      opacity: 1;
+    }
+    
+    /* Адаптивність */
     @media (max-width: 768px) {
       .header-container {
         flex-direction: column;
       }
       
-      .search-container {
-        margin: 1rem 0;
+      .search-form {
         width: 100%;
+        margin: 15px 0;
       }
       
-      .main-navigation ul {
+      .nav-list {
         flex-direction: column;
         align-items: center;
       }
       
-      .main-navigation li {
-        margin: 0.5rem 0;
+      .nav-item {
+        margin: 5px 0;
       }
       
       .footer-bottom {
         flex-direction: column;
-        text-align: center;
-      }
-      
-      .payment-methods,
-      .social-media {
-        margin: 1rem 0;
+        gap: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- Шапка -->
   <header class="site-header">
     <div class="header-container">
-      <div class="logo-container">
-        <a href="/" title="Marktplatz">
-          <img src="images/logo-marktplatz.png" alt="Marktplatz" loading="lazy">
+      <div class="logo">
+        <a href="/">
+          <img src="images/logo.png" alt="Маркетплейс">
         </a>
       </div>
       
-      <!-- Search Form -->
-      <div class="search-container">
-        <form action="/search" method="get">
-          <input type="search" name="search_term" placeholder="Ich suche..." autocomplete="off">
-          <button type="submit">Suchen</button>
-        </form>
-      </div>
+      <form class="search-form" action="/search" method="get">
+        <input type="search" class="search-input" placeholder="Я шукаю..." name="q" autocomplete="off">
+        <button type="submit" class="search-button">Знайти</button>
+      </form>
       
-      <!-- User Menu -->
-      <div class="user-menu">
-        <a href="/account" class="account-link">Mein Konto</a>
-        <a href="/wishlist" class="wishlist-link">Wunschliste</a>
-        <a href="/cart" class="cart-link">Warenkorb</a>
+      <div class="user-actions">
+        <a href="/account" class="user-link">Мій кабінет</a>
+        <a href="/cart" class="cart-link">Кошик</a>
       </div>
     </div>
   </header>
   
-  <!-- Main Navigation -->
-  <nav class="main-navigation">
-    <ul>
-      <li><a href="/Gesundheit-Schönheit">Gesundheit & Schönheit</a></li>
-      <li><a href="/Haus-Garten">Haus & Garten</a></li>
-      <li><a href="/Kleidung-Schuhe">Kleidung & Schuhe</a></li>
-      <li><a href="/Technik-Elektronik">Technik & Elektronik</a></li>
-      <li><a href="/Kinderbaby">Kinder & Baby</a></li>
-      <li><a href="/Auto-Motorrad">Auto & Motorrad</a></li>
-      <li><a href="/Sport-Freizeit">Sport & Freizeit</a></li>
-      <li><a href="/Lebensmittel">Lebensmittel</a></li>
-      <li><a href="/Industrie-Gewerbe">Industrie & Gewerbe</a></li>
-      <li><a href="/Dienstleistungen">Dienstleistungen</a></li>
+  <!-- Навігація -->
+  <nav class="main-nav">
+    <ul class="nav-list">
+      <li class="nav-item"><a href="/health-beauty" class="nav-link">Здоров'я та краса</a></li>
+      <li class="nav-item"><a href="/home-garden" class="nav-link">Дім і сад</a></li>
+      <li class="nav-item"><a href="/clothing-shoes" class="nav-link">Одяг та взуття</a></li>
+      <li class="nav-item"><a href="/electronics" class="nav-link">Електроніка</a></li>
+      <li class="nav-item"><a href="/kids-baby" class="nav-link">Діти та малюки</a></li>
+      <li class="nav-item"><a href="/auto-moto" class="nav-link">Авто та мото</a></li>
+      <li class="nav-item"><a href="/sports" class="nav-link">Спорт</a></li>
+      <li class="nav-item"><a href="/food" class="nav-link">Продукти</a></li>
     </ul>
   </nav>
   
-  <!-- Main Banner -->
+  <!-- Головний банер -->
   <div class="main-banner">
-    <img src="images/main-banner.jpg" alt="Top-Angebote dieser Woche">
+    <img src="images/main-banner.jpg" alt="Спеціальні пропозиції" class="banner-image">
   </div>
   
-  <!-- Featured Categories -->
-  <section class="featured-categories">
-    <h2>Beliebte Kategorien</h2>
+  <!-- Популярні категорії -->
+  <section class="section">
+    <h2 class="section-title">Популярні категорії</h2>
     <div class="categories-grid">
-      <div class="category-item">
-        <a href="/Deutsche-Marken">
-          <img src="images/german-brands.jpg" alt="Deutsche Marken">
-          <span>Deutsche Marken</span>
-        </a>
-      </div>
-      <div class="category-item">
-        <a href="/Öko-Produkte">
-          <img src="images/eco-products.jpg" alt="Öko-Produkte">
-          <span>Öko-Produkte</span>
-        </a>
-      </div>
-      <div class="category-item">
-        <a href="/Haushaltsgeräte">
-          <img src="images/home-appliances.jpg" alt="Haushaltsgeräte">
-          <span>Haushaltsgeräte</span>
-        </a>
-      </div>
-      <div class="category-item">
-        <a href="/Werkzeuge">
-          <img src="images/tools.jpg" alt="Werkzeuge">
-          <span>Werkzeuge</span>
-        </a>
-      </div>
+      <a href="/ukrainian-brands" class="category-card">
+        <img src="images/ukrainian-brands.jpg" alt="Українські бренди" class="category-image">
+        <span class="category-name">Українські бренди</span>
+      </a>
+      <a href="/eco-products" class="category-card">
+        <img src="images/eco-products.jpg" alt="Еко-продукти" class="category-image">
+        <span class="category-name">Еко-продукти</span>
+      </a>
+      <a href="/home-appliances" class="category-card">
+        <img src="images/home-appliances.jpg" alt="Побутова техніка" class="category-image">
+        <span class="category-name">Побутова техніка</span>
+      </a>
+      <a href="/tools" class="category-card">
+        <img src="images/tools.jpg" alt="Інструменти" class="category-image">
+        <span class="category-name">Інструменти</span>
+      </a>
     </div>
   </section>
   
-  <!-- Special Offers -->
-  <section class="special-offers">
-    <h2>Sonderangebote</h2>
+  <!-- Спеціальні пропозиції -->
+  <section class="section">
+    <h2 class="section-title">Спеціальні пропозиції</h2>
     <div class="categories-grid">
-      <div class="category-item">
-        <img src="images/offer1.jpg" alt="Angebot 1">
-        <h3>Bosch Haushaltsgeräte</h3>
-        <p class="price">Ab 199€</p>
-        <a href="/offer1" class="offer-link">Zum Angebot</a>
+      <div class="offer-card">
+        <img src="images/offer1.jpg" alt="Бутова техніка Bosch" class="offer-image">
+        <h3 class="offer-title">Побутова техніка Bosch</h3>
+        <p class="offer-price">Від 5 999 ₴</p>
+        <a href="/offer1" class="offer-button">До пропозиції</a>
       </div>
-      <div class="category-item">
-        <img src="images/offer2.jpg" alt="Angebot 2">
-        <h3>Adidas Sportbekleidung</h3>
-        <p class="price">Bis zu 40% Rabatt</p>
-        <a href="/offer2" class="offer-link">Zum Angebot</a>
+      <div class="offer-card">
+        <img src="images/offer2.jpg" alt="Спортивний одяг" class="offer-image">
+        <h3 class="offer-title">Спортивний одяг</h3>
+        <p class="offer-price">До -40% знижки</p>
+        <a href="/offer2" class="offer-button">До пропозиції</a>
       </div>
-      <div class="category-item">
-        <img src="images/offer3.jpg" alt="Angebot 3">
-        <h3>Miele Staubsauger</h3>
-        <p class="price">Nur 299€</p>
-        <a href="/offer3" class="offer-link">Zum Angebot</a>
+      <div class="offer-card">
+        <img src="images/offer3.jpg" alt="Пилосос Samsung" class="offer-image">
+        <h3 class="offer-title">Пилосос Samsung</h3>
+        <p class="offer-price">Тільки 8 499 ₴</p>
+        <a href="/offer3" class="offer-button">До пропозиції</a>
       </div>
     </div>
   </section>
   
-  <!-- German Manufacturers -->
-  <section class="german-manufacturers">
-    <h2>Deutsche Hersteller</h2>
-    <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
-      <img src="images/bosch.png" alt="Bosch" style="height: 50px; margin: 10px;">
-      <img src="images/siemens.png" alt="Siemens" style="height: 50px; margin: 10px;">
-      <img src="images/adidas.png" alt="Adidas" style="height: 50px; margin: 10px;">
-      <img src="images/audi.png" alt="Audi" style="height: 50px; margin: 10px;">
-      <img src="images/bmw.png" alt="BMW" style="height: 50px; margin: 10px;">
-      <img src="images/nivea.png" alt="Nivea" style="height: 50px; margin: 10px;">
+  <!-- Українські виробники -->
+  <section class="section">
+    <h2 class="section-title">Українські виробники</h2>
+    <div class="brands-container">
+      <img src="images/logo-ukrbud.png" alt="Укрбуд" class="brand-logo">
+      <img src="images/logo-vesna.png" alt="Весна" class="brand-logo">
+      <img src="images/logo-roshen.png" alt="Roshen" class="brand-logo">
+      <img src="images/logo-ukrposhta.png" alt="Укрпошта" class="brand-logo">
+      <img src="images/logo-nova-poshta.png" alt="Нова Пошта" class="brand-logo">
     </div>
   </section>
   
-  <!-- Become a Seller -->
-  <section class="become-seller" style="background-color: #7B04DF; color: white; text-align: center; padding: 3rem 1rem;">
-    <div class="seller-content">
-      <h2>Verkaufen Sie auf Marktplatz</h2>
-      <p style="margin: 1rem 0;">Erreichen Sie Millionen von Kunden in ganz Deutschland</p>
-      <a href="/seller-registration" style="display: inline-block; background-color: white; color: #7B04DF; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: bold;">Jetzt Verkäufer werden</a>
-    </div>
+  <!-- Для продавців -->
+  <section class="seller-section">
+    <h2 class="seller-title">Продавайте на Маркетплейсі</h2>
+    <p class="seller-text">Приєднуйтесь до найбільшої торговельної платформи України та отримуйте доступ до мільйонів покупців</p>
+    <a href="/become-seller" class="seller-button">Стати продавцем</a>
   </section>
   
-  <!-- Footer -->
+  <!-- Підвал -->
   <footer class="site-footer">
-    <div class="footer-columns">
-      <div class="footer-column">
-        <h3>Kategorien</h3>
-        <ul>
-          <li><a href="/Gesundheit-Schönheit">Gesundheit & Schönheit</a></li>
-          <li><a href="/Haus-Garten">Haus & Garten</a></li>
-          <li><a href="/Kleidung-Schuhe">Kleidung & Schuhe</a></li>
-          <li><a href="/Technik-Elektronik">Technik & Elektronik</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Über uns</h3>
-        <ul>
-          <li><a href="/ueber-uns">Über Marktplatz</a></li>
-          <li><a href="/karriere">Karriere</a></li>
-          <li><a href="/presse">Presse</a></li>
-          <li><a href="/nachhaltigkeit">Nachhaltigkeit</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Hilfe & Kontakt</h3>
-        <ul>
-          <li><a href="/hilfe">Hilfe-Center</a></li>
-          <li><a href="/kontakt">Kontakt</a></li>
-          <li><a href="/versand">Versand & Lieferung</a></li>
-          <li><a href="/rueckgabe">Rückgabe & Umtausch</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Rechtliches</h3>
-        <ul>
-          <li><a href="/agb">AGB</a></li>
-          <li><a href="/datenschutz">Datenschutz</a></li>
-          <li><a href="/impressum">Impressum</a></li>
-          <li><a href="/cookies">Cookie-Richtlinie</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="copyright">
-        &copy; 2023 Marktplatz GmbH. Alle Rechte vorbehalten.
-      </div>
-      <div class="payment-methods">
-        <img src="images/visa.png" alt="Visa">
-        <img src="images/mastercard.png" alt="Mastercard">
-        <img src="images/paypal.png" alt="PayPal">
-        <img src="images/klarna.png" alt="Klarna">
-      </div>
-      <div class="social-media">
-        <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-        <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
-        <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-        <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
-      </div>
-    </div>
-  </footer>
-  
-  <!-- Schema.org Markup -->
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "name": "Marktplatz",
-    "url": "https://marktplatz.de",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://marktplatz.de/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-</body>
-</html>
+    <div class="footer-container">
+      <div class="footer-columns">
+        <div class="
