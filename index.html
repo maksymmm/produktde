@@ -1,316 +1,421 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="de">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
+  <meta charset="utf-8">
+  <title>Marktplatz — Der größte Marktplatz Deutschlands</title>
+  <meta name="description" content="Marktplatz — Der größte Marktplatz Deutschlands, wo 100 Millionen Produkte von Verkäufern aus dem ganzen Land verkauft werden. Alles — von der Zahnbürste bis zur kugelsicheren Weste gibt es auf Marktplatz">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Marktplatz — Der größte Marktplatz Deutschlands">
+  <meta property="og:description" content="Marktplatz — Der größte Marktplatz Deutschlands, wo 100 Millionen Produkte von Verkäufern aus dem ganzen Land verkauft werden.">
+  <meta property="og:site_name" content="marktplatz.de">
+  <meta property="og:image" content="https://marktplatz.de/static/images/marktplatz-social.jpg">
+  
+  <!-- Favicons (using relative paths that work on GitHub) -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
+  
+  <!-- CSS -->
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    
+    body {
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+    }
+    
+    /* Header styles */
+    .site-header {
+      background-color: #7B04DF;
+      color: white;
+      padding: 1rem;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .logo-container img {
+      height: 40px;
+    }
+    
+    /* Search form */
+    .search-container input {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px 0 0 4px;
+    }
+    
+    .search-container button {
+      padding: 0.5rem 1rem;
+      background-color: #5F3D94;
+      color: white;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    
+    /* Navigation */
+    .main-navigation {
+      background-color: #5F3D94;
+      padding: 0.5rem 0;
+    }
+    
+    .main-navigation ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    
+    .main-navigation li {
+      margin: 0 1rem;
+    }
+    
+    .main-navigation a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    /* Main content sections */
+    .main-banner img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+    }
+    
+    section {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    section h2 {
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+    
+    /* Featured categories grid */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    
+    .category-item {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .category-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    
+    .category-item span {
+      display: block;
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    /* Footer */
+    .site-footer {
+      background-color: #333;
+      color: white;
+      padding: 2rem 1rem;
+    }
+    
+    .footer-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-column h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-column a {
+      color: #ccc;
+      text-decoration: none;
+    }
+    
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #555;
+    }
+    
+    .payment-methods img,
+    .social-media img {
+      height: 30px;
+      margin: 0 0.5rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+      }
+      
+      .search-container {
+        margin: 1rem 0;
+        width: 100%;
+      }
+      
+      .main-navigation ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .main-navigation li {
+        margin: 0.5rem 0;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .payment-methods,
+      .social-media {
+        margin: 1rem 0;
+      }
+    }
   </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="de" data-pds-color-scheme="light"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Marktplatz — Der größte Marktplatz Deutschlands&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="utf-8"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="description" content="Marktplatz — Der größte Marktplatz Deutschlands, wo 100 Millionen Produkte von Verkäufern aus dem ganzen Land verkauft werden. Alles — von der Zahnbürste bis zur kugelsicheren Weste gibt es auf Marktplatz"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-capable" content="yes"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="MobileOptimized" content="176"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="HandheldFriendly" content="True"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="format-detection" content="telephone=no"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="theme-color" content="#7B04DF"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="msapplication-navbutton-color" content="#7B04DF"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-status-bar-style" content="#7B04DF"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-title" content="Marktplatz"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="application-name" content="Marktplatz"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="msapplication-TileColor" content="#5F3D94"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="msapplication-TileImage" content="/static/icons/mstile-144x144.png"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="msapplication-config" content="/static/icons/browserconfig.xml"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Open Graph / Social Media Meta Tags --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta property="og:title" content="Marktplatz — Der größte Marktplatz Deutschlands"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta property="og:description" content="Marktplatz — Der größte Marktplatz Deutschlands, wo 100 Millionen Produkte von Verkäufern aus dem ganzen Land verkauft werden."/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta property="og:site_name" content="marktplatz.de"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta property="og:image" content="/static/images/marktplatz-social.jpg"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Twitter Meta Tags --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="twitter:card" content="summary"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="twitter:title" content="Marktplatz — Der größte Marktplatz Deutschlands"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="twitter:description" content="Marktplatz — Der größte Marktplatz Deutschlands, wo 100 Millionen Produkte von Verkäufern aus dem ganzen Land verkauft werden."/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="twitter:image:src" content="/static/images/marktplatz-twitter.jpg"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Alternate Language Versions --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="alternate" href="https://marktplatz.de/de/" hreflang="de-DE"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="alternate" href="https://marktplatz.de/en/" hreflang="en-DE"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="alternate" href="https://marktplatz.de/" hreflang="x-default"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Favicons --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="shortcut icon" type="image/x-icon" href="/static/icons/favicon.ico"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="mask-icon" href="/static/icons/favicon.svg" color="#5F3D94"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="icon" type="image/svg+xml" href="/static/icons/favicon.svg"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="icon" type="image/png" href="/static/icons/favicon-16x16.png" sizes="16x16"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="icon" type="image/png" href="/static/icons/favicon-32x32.png" sizes="32x32"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="apple-touch-icon" href="/static/icons/apple-touch-icon.png"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Canonical URL --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="canonical" href="https://marktplatz.de/de/"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Preload Important Resources --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="preload" as="image" href="/static/images/main-banner.jpg" fetchpriority="high"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- CSS --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link href="/static/css/vendor_styles.css" rel='stylesheet' type='text/css' media='screen'&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link href="/static/css/common_styles.css" rel='stylesheet' type='text/css' media='screen'&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Google Analytics --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>window.dataLayer = window.dataLayer || [];</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function gtag(){dataLayer.push(arguments);}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>gtag('js', new Date());</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>gtag('config', 'G-XXXXXXXXXX');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Facebook Pixel --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>!function(f,b,e,v,n,t,s)</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>{if(f.fbq)return;n=f.fbq=function(){n.callMethod?</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>n.callMethod.apply(n,arguments):n.queue.push(arguments)};</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>n.queue=[];t=b.createElement(e);t.async=!0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>t.src=v;s=b.getElementsByTagName(e)[0];</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>s.parentNode.insertBefore(t,s)}(window, document,'script',</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>'https://connect.facebook.net/en_US/fbevents.js');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>fbq('init', 'XXXXXXXXXXXXXXX');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>fbq('track', 'PageView');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;noscript&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;img height="1" width="1" style="display:none"<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXX&amp;ev=PageView&amp;noscript=1"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/noscript&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Criteo --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script type="text/javascript" src="//dynamic.criteo.com/js/ld/ld.js?a=XXXXX" async="true"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body class='ek-body ek-body_background_black-100 ek-body_width-min_xxs ek-body_color_black-900 ek-body_width-max_3xl ek-body_indent_l@large'&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Header --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;header class="site-header"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="header-container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="logo-container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="/de/" title="Marktplatz"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img src="/static/images/logo-marktplatz.png" width="120" height="40" alt="Marktplatz" loading="lazy"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- Search Form --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="search-container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;form action="/de/search" method="get"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;input type="search" name="search_term" placeholder="Ich suche..." autoComplete="off"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button type="submit"&gt;Suchen&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/form&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- User Menu --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="user-menu"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="/de/account" class="account-link"&gt;Mein Konto&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="/de/wishlist" class="wishlist-link"&gt;Wunschliste&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="/de/cart" class="cart-link"&gt;Warenkorb&lt;/a&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Language Switcher --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="language-switcher"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span class="current-language"&gt;DE&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;ul class="language-dropdown"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li&gt;&lt;a href="/de/" hreflang="de-DE"&gt;Deutsch&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li&gt;&lt;a href="/en/" hreflang="en-DE"&gt;English&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Main Navigation --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;nav class="main-navigation"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="/de/Gesundheit-Schönheit"&gt;Gesundheit &amp; Schönheit&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="/de/Haus-Garten"&gt;Haus &amp; Garten&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="/de/Kleidung-Schuhe"&gt;Kleidung &amp; Schuhe&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="/de/Technik-Elektronik"&gt;Technik &amp; Elektronik&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="/de/Kinderbaby"&gt;Kinder &amp; Baby&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="/de/Auto-Motorrad"&gt;Auto &amp; Motorrad&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="/de/Sport-Freizeit"&gt;Sport &amp; Freizeit&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="/de/Lebensmittel"&gt;Lebensmittel&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="/de/Industrie-Gewerbe"&gt;Industrie &amp; Gewerbe&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="/de/Dienstleistungen"&gt;Dienstleistungen&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Main Banner --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="main-banner"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;img src="/static/images/main-banner.jpg" alt="Top-Angebote dieser Woche" width="1200" height="400"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Featured Categories --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="featured-categories"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2&gt;Beliebte Kategorien&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="categories-grid"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="category-item"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="/de/Deutsche-Marken"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img src="/static/images/german-brands.jpg" alt="Deutsche Marken"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Deutsche Marken&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="category-item"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="/de/Öko-Produkte"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img src="/static/images/eco-products.jpg" alt="Öko-Produkte"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Öko-Produkte&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="category-item"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="/de/Haushaltsgeräte"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img src="/static/images/home-appliances.jpg" alt="Haushaltsgeräte"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Haushaltsgeräte&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="category-item"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="/de/Werkzeuge"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img src="/static/images/tools.jpg" alt="Werkzeuge"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Werkzeuge&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Special Offers --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="special-offers"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2&gt;Sonderangebote&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="offers-carousel"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="offer-item"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;img src="/static/images/offer1.jpg" alt="Angebot 1"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Bosch Haushaltsgeräte&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p class="price"&gt;Ab 199€&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="/de/offer1" class="offer-link"&gt;Zum Angebot&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="offer-item"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;img src="/static/images/offer2.jpg" alt="Angebot 2"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Adidas Sportbekleidung&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p class="price"&gt;Bis zu 40% Rabatt&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="/de/offer2" class="offer-link"&gt;Zum Angebot&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="offer-item"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;img src="/static/images/offer3.jpg" alt="Angebot 3"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Miele Staubsauger&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p class="price"&gt;Nur 299€&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="/de/offer3" class="offer-link"&gt;Zum Angebot&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- German Manufacturers --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="german-manufacturers"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2&gt;Deutsche Hersteller&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="manufacturers-logos"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;img src="/static/logos/bosch.png" alt="Bosch"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;img src="/static/logos/siemens.png" alt="Siemens"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;img src="/static/logos/adidas.png" alt="Adidas"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;img src="/static/logos/audi.png" alt="Audi"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;img src="/static/logos/bmw.png" alt="BMW"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;img src="/static/logos/nivea.png" alt="Nivea"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Become a Seller --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="become-seller"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="seller-content"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Verkaufen Sie auf Marktplatz&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;Erreichen Sie Millionen von Kunden in ganz Deutschland&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;a href="/de/seller-registration" class="seller-button"&gt;Jetzt Verkäufer werden&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Footer --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;footer class="site-footer"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="footer-columns"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="footer-column"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Kategorien&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/Gesundheit-Schönheit"&gt;Gesundheit &amp; Schönheit&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/Haus-Garten"&gt;Haus &amp; Garten&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/Kleidung-Schuhe"&gt;Kleidung &amp; Schuhe&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/Technik-Elektronik"&gt;Technik &amp; Elektronik&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="footer-column"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Über uns&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/ueber-uns"&gt;Über Marktplatz&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/karriere"&gt;Karriere&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/presse"&gt;Presse&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/nachhaltigkeit"&gt;Nachhaltigkeit&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="footer-column"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Hilfe &amp; Kontakt&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/hilfe"&gt;Hilfe-Center&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/versand"&gt;Versand &amp; Lieferung&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/rueckgabe"&gt;Rückgabe &amp; Umtausch&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="footer-column"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Rechtliches&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/agb"&gt;AGB&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/datenschutz"&gt;Datenschutz&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/impressum"&gt;Impressum&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/de/cookies"&gt;Cookie-Richtlinie&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="footer-bottom"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="copyright"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&amp;copy; 2023 Marktplatz GmbH. Alle Rechte vorbehalten.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="payment-methods"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;img src="/static/icons/visa.png" alt="Visa"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;img src="/static/icons/mastercard.png" alt="Mastercard"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;img src="/static/icons/paypal.png" alt="PayPal"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;img src="/static/icons/klarna.png" alt="Klarna"/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="social-media"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#"&gt;&lt;img src="/static/icons/facebook.png" alt="Facebook"/&gt;&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#"&gt;&lt;img src="/static/icons/instagram.png" alt="Instagram"/&gt;&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#"&gt;&lt;img src="/static/icons/twitter.png" alt="Twitter"/&gt;&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#"&gt;&lt;img src="/static/icons/youtube.png" alt="YouTube"/&gt;&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Schema.org Markup --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script type="application/ld+json"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>"@context": "http://schema.org",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>"@type": "WebSite",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>"name": "Marktplatz",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>"url": "https://marktplatz.de",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>"potentialAction": {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"@type": "SearchAction",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"target": "https://marktplatz.de/search?q={search_term_string}",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"query-input": "required name=search_term_string"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- JavaScript --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="/static/js/main.js"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo-container">
+        <a href="/" title="Marktplatz">
+          <img src="images/logo-marktplatz.png" alt="Marktplatz" loading="lazy">
+        </a>
+      </div>
+      
+      <!-- Search Form -->
+      <div class="search-container">
+        <form action="/search" method="get">
+          <input type="search" name="search_term" placeholder="Ich suche..." autocomplete="off">
+          <button type="submit">Suchen</button>
+        </form>
+      </div>
+      
+      <!-- User Menu -->
+      <div class="user-menu">
+        <a href="/account" class="account-link">Mein Konto</a>
+        <a href="/wishlist" class="wishlist-link">Wunschliste</a>
+        <a href="/cart" class="cart-link">Warenkorb</a>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Main Navigation -->
+  <nav class="main-navigation">
+    <ul>
+      <li><a href="/Gesundheit-Schönheit">Gesundheit & Schönheit</a></li>
+      <li><a href="/Haus-Garten">Haus & Garten</a></li>
+      <li><a href="/Kleidung-Schuhe">Kleidung & Schuhe</a></li>
+      <li><a href="/Technik-Elektronik">Technik & Elektronik</a></li>
+      <li><a href="/Kinderbaby">Kinder & Baby</a></li>
+      <li><a href="/Auto-Motorrad">Auto & Motorrad</a></li>
+      <li><a href="/Sport-Freizeit">Sport & Freizeit</a></li>
+      <li><a href="/Lebensmittel">Lebensmittel</a></li>
+      <li><a href="/Industrie-Gewerbe">Industrie & Gewerbe</a></li>
+      <li><a href="/Dienstleistungen">Dienstleistungen</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Main Banner -->
+  <div class="main-banner">
+    <img src="images/main-banner.jpg" alt="Top-Angebote dieser Woche">
+  </div>
+  
+  <!-- Featured Categories -->
+  <section class="featured-categories">
+    <h2>Beliebte Kategorien</h2>
+    <div class="categories-grid">
+      <div class="category-item">
+        <a href="/Deutsche-Marken">
+          <img src="images/german-brands.jpg" alt="Deutsche Marken">
+          <span>Deutsche Marken</span>
+        </a>
+      </div>
+      <div class="category-item">
+        <a href="/Öko-Produkte">
+          <img src="images/eco-products.jpg" alt="Öko-Produkte">
+          <span>Öko-Produkte</span>
+        </a>
+      </div>
+      <div class="category-item">
+        <a href="/Haushaltsgeräte">
+          <img src="images/home-appliances.jpg" alt="Haushaltsgeräte">
+          <span>Haushaltsgeräte</span>
+        </a>
+      </div>
+      <div class="category-item">
+        <a href="/Werkzeuge">
+          <img src="images/tools.jpg" alt="Werkzeuge">
+          <span>Werkzeuge</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Special Offers -->
+  <section class="special-offers">
+    <h2>Sonderangebote</h2>
+    <div class="categories-grid">
+      <div class="category-item">
+        <img src="images/offer1.jpg" alt="Angebot 1">
+        <h3>Bosch Haushaltsgeräte</h3>
+        <p class="price">Ab 199€</p>
+        <a href="/offer1" class="offer-link">Zum Angebot</a>
+      </div>
+      <div class="category-item">
+        <img src="images/offer2.jpg" alt="Angebot 2">
+        <h3>Adidas Sportbekleidung</h3>
+        <p class="price">Bis zu 40% Rabatt</p>
+        <a href="/offer2" class="offer-link">Zum Angebot</a>
+      </div>
+      <div class="category-item">
+        <img src="images/offer3.jpg" alt="Angebot 3">
+        <h3>Miele Staubsauger</h3>
+        <p class="price">Nur 299€</p>
+        <a href="/offer3" class="offer-link">Zum Angebot</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- German Manufacturers -->
+  <section class="german-manufacturers">
+    <h2>Deutsche Hersteller</h2>
+    <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+      <img src="images/bosch.png" alt="Bosch" style="height: 50px; margin: 10px;">
+      <img src="images/siemens.png" alt="Siemens" style="height: 50px; margin: 10px;">
+      <img src="images/adidas.png" alt="Adidas" style="height: 50px; margin: 10px;">
+      <img src="images/audi.png" alt="Audi" style="height: 50px; margin: 10px;">
+      <img src="images/bmw.png" alt="BMW" style="height: 50px; margin: 10px;">
+      <img src="images/nivea.png" alt="Nivea" style="height: 50px; margin: 10px;">
+    </div>
+  </section>
+  
+  <!-- Become a Seller -->
+  <section class="become-seller" style="background-color: #7B04DF; color: white; text-align: center; padding: 3rem 1rem;">
+    <div class="seller-content">
+      <h2>Verkaufen Sie auf Marktplatz</h2>
+      <p style="margin: 1rem 0;">Erreichen Sie Millionen von Kunden in ganz Deutschland</p>
+      <a href="/seller-registration" style="display: inline-block; background-color: white; color: #7B04DF; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: bold;">Jetzt Verkäufer werden</a>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h3>Kategorien</h3>
+        <ul>
+          <li><a href="/Gesundheit-Schönheit">Gesundheit & Schönheit</a></li>
+          <li><a href="/Haus-Garten">Haus & Garten</a></li>
+          <li><a href="/Kleidung-Schuhe">Kleidung & Schuhe</a></li>
+          <li><a href="/Technik-Elektronik">Technik & Elektronik</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Über uns</h3>
+        <ul>
+          <li><a href="/ueber-uns">Über Marktplatz</a></li>
+          <li><a href="/karriere">Karriere</a></li>
+          <li><a href="/presse">Presse</a></li>
+          <li><a href="/nachhaltigkeit">Nachhaltigkeit</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Hilfe & Kontakt</h3>
+        <ul>
+          <li><a href="/hilfe">Hilfe-Center</a></li>
+          <li><a href="/kontakt">Kontakt</a></li>
+          <li><a href="/versand">Versand & Lieferung</a></li>
+          <li><a href="/rueckgabe">Rückgabe & Umtausch</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Rechtliches</h3>
+        <ul>
+          <li><a href="/agb">AGB</a></li>
+          <li><a href="/datenschutz">Datenschutz</a></li>
+          <li><a href="/impressum">Impressum</a></li>
+          <li><a href="/cookies">Cookie-Richtlinie</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="copyright">
+        &copy; 2023 Marktplatz GmbH. Alle Rechte vorbehalten.
+      </div>
+      <div class="payment-methods">
+        <img src="images/visa.png" alt="Visa">
+        <img src="images/mastercard.png" alt="Mastercard">
+        <img src="images/paypal.png" alt="PayPal">
+        <img src="images/klarna.png" alt="Klarna">
+      </div>
+      <div class="social-media">
+        <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Schema.org Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Marktplatz",
+    "url": "https://marktplatz.de",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://marktplatz.de/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 </body>
 </html>
