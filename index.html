@@ -2,9 +2,15 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+  <title>Marktplatz — Deutschlands größter Online-Marktplatz</title>
+  <meta name="description" content="Über 1 Million Produkte von deutschen Herstellern. Kostenloser Versand ab 50€.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marktplatz | Deutsch-Englischer Marktplatz</title>
+  
+  <!-- Open Graph Meta -->
+  <meta property="og:image" content="https://example.com/images/social-preview.jpg">
+  
   <style>
+    /* Modern CSS with Variables */
     :root {
       --primary: #4a2b82;
       --secondary: #5d3d9e;
@@ -14,46 +20,20 @@
       --gray: #6c757d;
     }
     
-    /* Language Switch Styles */
-    .lang-switcher {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
-    .lang-btn {
-      background: white;
-      border: 1px solid var(--primary);
-      color: var(--primary);
-      padding: 5px 15px;
-      border-radius: 20px;
-      cursor: pointer;
-      margin: 0 5px;
-      font-weight: bold;
-      transition: all 0.3s;
-    }
-    .lang-btn.active {
-      background: var(--primary);
-      color: white;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     
-    /* Language Content */
-    [lang="de"] { display: none; }
-    [lang="en"] { display: none; }
-    
-    body.de [lang="de"] { display: block; }
-    body.en [lang="en"] { display: block; }
-    
-    /* Base Styles */
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
       color: var(--dark);
       background: var(--light);
-      margin: 0;
-      padding: 0;
     }
     
+    /* Improved Header */
     .main-header {
       background: white;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -68,7 +48,6 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 1rem;
-      position: relative;
     }
     
     .logo img {
@@ -76,6 +55,7 @@
       width: auto;
     }
     
+    /* Advanced Search */
     .search-form {
       flex: 1;
       margin: 0 2rem;
@@ -91,6 +71,12 @@
       transition: all 0.3s;
     }
     
+    .search-input:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+    
+    /* Hero Banner with Gradient Overlay */
     .hero-banner {
       height: 60vh;
       min-height: 500px;
@@ -100,21 +86,27 @@
       display: flex;
       align-items: center;
       color: white;
-      text-align: center;
     }
     
-    .image-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    
+    /* Product Cards with Hover Animation */
     .product-card {
       background: white;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    /* Responsive Image Gallery */
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
     }
     
     .gallery-image {
@@ -125,29 +117,49 @@
       transition: opacity 0.3s;
     }
     
+    .gallery-image:hover {
+      opacity: 0.9;
+    }
+    
+    /* Micro-interactions */
+    button, .btn {
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: var(--secondary);
+      transform: translateY(-2px);
+    }
+    
+    /* Responsive Breakpoints */
     @media (max-width: 768px) {
       .header-container {
         flex-direction: column;
       }
+      
       .search-form {
         margin: 1rem 0;
         width: 100%;
       }
+      
       .hero-banner {
         height: 400px;
       }
     }
   </style>
+  
+  <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="de">
-  <!-- Language Switcher -->
-  <div class="lang-switcher">
-    <button class="lang-btn de-btn active" onclick="switchLanguage('de')">DE</button>
-    <button class="lang-btn en-btn" onclick="switchLanguage('en')">EN</button>
-  </div>
+<body>
 
-  <!-- Header -->
+  <!-- Enhanced Header -->
   <header class="main-header">
     <div class="header-container">
       <div class="logo">
@@ -157,182 +169,137 @@
       </div>
       
       <form class="search-form" action="/search">
-        <div lang="de">
-          <input type="search" class="search-input" placeholder="Was suchen Sie heute?" aria-label="Suche">
-        </div>
-        <div lang="en">
-          <input type="search" class="search-input" placeholder="What are you looking for?" aria-label="Search">
-        </div>
+        <input type="search" class="search-input" placeholder="Was suchen Sie heute?" aria-label="Search">
         <button type="submit" class="search-btn" aria-label="Search button">
           <i class="fas fa-search"></i>
         </button>
       </form>
       
       <nav class="user-nav">
-        <div lang="de">
-          <a href="/account" class="nav-link">
-            <i class="far fa-user"></i>
-            <span>Mein Konto</span>
-          </a>
-          <a href="/cart" class="nav-link">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Warenkorb</span>
-          </a>
-        </div>
-        <div lang="en">
-          <a href="/account" class="nav-link">
-            <i class="far fa-user"></i>
-            <span>My Account</span>
-          </a>
-          <a href="/cart" class="nav-link">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Cart</span>
-          </a>
-        </div>
+        <a href="/account" class="nav-link">
+          <i class="far fa-user"></i>
+          <span>Mein Konto</span>
+        </a>
+        <a href="/cart" class="nav-link">
+          <i class="fas fa-shopping-cart"></i>
+          <span>Warenkorb</span>
+        </a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Banner -->
+  <!-- Hero Section with Call-to-Action -->
   <section class="hero-banner">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
-      <div lang="de">
-        <h1 style="font-size: 3rem; margin-bottom: 1rem;">Sommerschlussverkauf</h1>
-        <p style="font-size: 1.5rem; margin-bottom: 2rem;">Bis zu 50% Rabatt auf ausgewählte Artikel</p>
-        <a href="/angebote" style="padding: 1rem 2rem; background: white; color: var(--primary); border-radius: 50px; font-weight: bold; display: inline-block; text-decoration: none;">
-          Jetzt entdecken
-        </a>
-      </div>
-      <div lang="en">
-        <h1 style="font-size: 3rem; margin-bottom: 1rem;">Summer Sale</h1>
-        <p style="font-size: 1.5rem; margin-bottom: 2rem;">Up to 50% off selected items</p>
-        <a href="/offers" style="padding: 1rem 2rem; background: white; color: var(--primary); border-radius: 50px; font-weight: bold; display: inline-block; text-decoration: none;">
-          Discover Now
-        </a>
-      </div>
+    <div class="hero-content" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+      <h1 style="font-size: 3rem; margin-bottom: 1rem;">Sommerschlussverkauf</h1>
+      <p style="font-size: 1.5rem; margin-bottom: 2rem;">Bis zu 50% Rabatt auf ausgewählte Artikel</p>
+      <a href="/angebote" class="btn btn-primary" style="padding: 1rem 2rem; border-radius: 50px; font-weight: bold; display: inline-block;">
+        Jetzt entdecken
+      </a>
     </div>
   </section>
 
-  <!-- Categories -->
+  <!-- Featured Categories with Images -->
   <section style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
-    <div lang="de">
-      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Beliebte Kategorien</h2>
-    </div>
-    <div lang="en">
-      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Popular Categories</h2>
-    </div>
+    <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Beliebte Kategorien</h2>
     
     <div class="image-gallery">
       <a href="/elektronik" class="category-card">
-        <img src="images/electronics.jpg" class="gallery-image" loading="lazy">
-        <div style="padding: 1rem; text-align: center; background: white;">
-          <div lang="de">
-            <h3>Elektronik</h3>
-            <p>Über 10.000 Artikel</p>
-          </div>
-          <div lang="en">
-            <h3>Electronics</h3>
-            <p>Over 10,000 items</p>
-          </div>
+        <img src="images/electronics-category.jpg" alt="Elektronik" class="gallery-image" loading="lazy">
+        <div style="padding: 1rem; text-align: center;">
+          <h3>Elektronik</h3>
+          <p>Über 10.000 Artikel</p>
         </div>
       </a>
       
       <a href="/mode" class="category-card">
-        <img src="images/fashion.jpg" class="gallery-image" loading="lazy">
-        <div style="padding: 1rem; text-align: center; background: white;">
-          <div lang="de">
-            <h3>Mode</h3>
-            <p>Neue Kollektion</p>
-          </div>
-          <div lang="en">
-            <h3>Fashion</h3>
-            <p>New collection</p>
-          </div>
+        <img src="images/fashion-category.jpg" alt="Mode" class="gallery-image" loading="lazy">
+        <div style="padding: 1rem; text-align: center;">
+          <h3>Mode</h3>
+          <p>Neue Kollektion</p>
         </div>
       </a>
       
       <a href="/haushalt" class="category-card">
-        <img src="images/home.jpg" class="gallery-image" loading="lazy">
-        <div style="padding: 1rem; text-align: center; background: white;">
-          <div lang="de">
-            <h3>Haushalt</h3>
-            <p>Praktische Lösungen</p>
-          </div>
-          <div lang="en">
-            <h3>Home</h3>
-            <p>Practical solutions</p>
-          </div>
+        <img src="images/home-category.jpg" alt="Haushalt" class="gallery-image" loading="lazy">
+        <div style="padding: 1rem; text-align: center;">
+          <h3>Haushalt</h3>
+          <p>Praktische Lösungen</p>
         </div>
       </a>
     </div>
   </section>
 
-  <!-- Products -->
+  <!-- Product Showcase -->
   <section style="background: white; padding: 4rem 2rem;">
     <div style="max-width: 1200px; margin: 0 auto;">
-      <div lang="de">
-        <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Bestseller</h2>
-      </div>
-      <div lang="en">
-        <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Bestsellers</h2>
-      </div>
+      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Bestseller</h2>
       
       <div class="image-gallery">
+        <!-- Product 1 -->
         <div class="product-card">
-          <img src="images/washing-machine.jpg" class="gallery-image" loading="lazy">
+          <img src="images/product1.jpg" alt="Bosch Waschmaschine" class="gallery-image" loading="lazy">
           <div style="padding: 1.5rem;">
-            <div lang="de">
-              <h3 style="margin-bottom: 0.5rem;">Bosch Waschmaschine</h3>
-              <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-                € 599,00
-              </div>
-              <div style="color: var(--gray); margin-bottom: 1rem;">
-                Kostenloser Versand
-              </div>
+            <h3 style="margin-bottom: 0.5rem;">Bosch Waschmaschine</h3>
+            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
+              € 599,00
             </div>
-            <div lang="en">
-              <h3 style="margin-bottom: 0.5rem;">Bosch Washing Machine</h3>
-              <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-                € 599.00
-              </div>
-              <div style="color: var(--gray); margin-bottom: 1rem;">
-                Free shipping
-              </div>
+            <div style="color: var(--gray); margin-bottom: 1rem;">
+              Kostenloser Versand
             </div>
             <button style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px;">
-              <span lang="de">In den Warenkorb</span>
-              <span lang="en">Add to Cart</span>
+              In den Warenkorb
             </button>
           </div>
         </div>
         
+        <!-- Product 2 -->
         <div class="product-card">
-          <img src="images/smartwatch.jpg" class="gallery-image" loading="lazy">
+          <img src="images/product2.jpg" alt="Smartwatch" class="gallery-image" loading="lazy">
           <div style="padding: 1.5rem;">
-            <div lang="de">
-              <h3 style="margin-bottom: 0.5rem;">Smartwatch Pro</h3>
-              <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-                € 199,99
-              </div>
-              <div style="color: var(--gray); margin-bottom: 1rem;">
-                Versand in 1-2 Tagen
-              </div>
+            <h3 style="margin-bottom: 0.5rem;">Smartwatch Pro</h3>
+            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
+              € 199,99
             </div>
-            <div lang="en">
-              <h3 style="margin-bottom: 0.5rem;">Smartwatch Pro</h3>
-              <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-                € 199.99
-              </div>
-              <div style="color: var(--gray); margin-bottom: 1rem;">
-                Ships in 1-2 days
-              </div>
+            <div style="color: var(--gray); margin-bottom: 1rem;">
+              Versand in 1-2 Tagen
             </div>
             <button style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px;">
-              <span lang="de">In den Warenkorb</span>
-              <span lang="en">Add to Cart</span>
+              In den Warenkorb
             </button>
           </div>
         </div>
+        
+        <!-- Product 3 -->
+        <div class="product-card">
+          <img src="images/product3.jpg" alt="Laufschuhe" class="gallery-image" loading="lazy">
+          <div style="padding: 1.5rem;">
+            <h3 style="margin-bottom: 0.5rem;">Laufschuhe Premium</h3>
+            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
+              € 129,95
+            </div>
+            <div style="color: var(--gray); margin-bottom: 1rem;">
+              Nur noch 3 verfügbar
+            </div>
+            <button style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px;">
+              In den Warenkorb
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Showcase -->
+  <section style="padding: 4rem 2rem; background: var(--light);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Unsere Markenpartner</h2>
+      
+      <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 2rem;">
+        <img src="images/bosch-logo.png" alt="Bosch" style="height: 50px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy">
+        <img src="images/adidas-logo.png" alt="Adidas" style="height: 40px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy">
+        <img src="images/siemens-logo.png" alt="Siemens" style="height: 45px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy">
+        <img src="images/nivea-logo.png" alt="Nivea" style="height: 50px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy">
       </div>
     </div>
   </section>
@@ -341,90 +308,53 @@
   <footer style="background: var(--dark); color: white; padding: 4rem 2rem;">
     <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
       <div>
-        <h3 style="margin-bottom: 1.5rem;">
-          <span lang="de">Einkaufen</span>
-          <span lang="en">Shop</span>
-        </h3>
+        <h3 style="margin-bottom: 1.5rem;">Einkaufen</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;">
-            <a href="#" style="color: #aaa; text-decoration: none;">
-              <span lang="de">Alle Kategorien</span>
-              <span lang="en">All Categories</span>
-            </a>
-          </li>
-          <li style="margin-bottom: 0.5rem;">
-            <a href="#" style="color: #aaa; text-decoration: none;">
-              <span lang="de">Angebote</span>
-              <span lang="en">Deals</span>
-            </a>
-          </li>
+          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Alle Kategorien</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Angebote</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Neuheiten</a></li>
         </ul>
       </div>
       
       <div>
-        <h3 style="margin-bottom: 1.5rem;">
-          <span lang="de">Service</span>
-          <span lang="en">Service</span>
-        </h3>
+        <h3 style="margin-bottom: 1.5rem;">Service</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;">
-            <a href="#" style="color: #aaa; text-decoration: none;">
-              <span lang="de">Kundenservice</span>
-              <span lang="en">Customer Service</span>
-            </a>
-          </li>
-          <li style="margin-bottom: 0.5rem;">
-            <a href="#" style="color: #aaa; text-decoration: none;">
-              <span lang="de">Versand</span>
-              <span lang="en">Shipping</span>
-            </a>
-          </li>
+          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Kundenservice</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Rückgabe</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Versand</a></li>
         </ul>
       </div>
       
       <div>
-        <h3 style="margin-bottom: 1.5rem;">
-          <span lang="de">Unternehmen</span>
-          <span lang="en">Company</span>
-        </h3>
+        <h3 style="margin-bottom: 1.5rem;">Unternehmen</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;">
-            <a href="#" style="color: #aaa; text-decoration: none;">
-              <span lang="de">Über uns</span>
-              <span lang="en">About Us</span>
-            </a>
-          </li>
-          <li style="margin-bottom: 0.5rem;">
-            <a href="#" style="color: #aaa; text-decoration: none;">
-              <span lang="de">Karriere</span>
-              <span lang="en">Careers</span>
-            </a>
-          </li>
+          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Über uns</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Karriere</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Presse</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 style="margin-bottom: 1.5rem;">Rechtliches</h3>
+        <ul style="list-style: none;">
+          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">AGB</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Datenschutz</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Impressum</a></li>
         </ul>
       </div>
     </div>
     
     <div style="max-width: 1200px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid #444; display: flex; justify-content: space-between; align-items: center;">
       <div style="color: #777;">
-        <span lang="de">© 2023 Marktplatz GmbH. Alle Rechte vorbehalten.</span>
-        <span lang="en">© 2023 Marktplatz GmbH. All rights reserved.</span>
+        &copy; 2023 Marktplatz GmbH. Alle Rechte vorbehalten.
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <a href="#"><i class="fab fa-facebook-f" style="color: #aaa;"></i></a>
+        <a href="#"><i class="fab fa-instagram" style="color: #aaa;"></i></a>
+        <a href="#"><i class="fab fa-twitter" style="color: #aaa;"></i></a>
       </div>
     </div>
   </footer>
 
-  <script>
-    function switchLanguage(lang) {
-      document.body.className = lang;
-      localStorage.setItem('preferredLang', lang);
-      
-      // Update active button
-      document.querySelector('.de-btn').classList.toggle('active', lang === 'de');
-      document.querySelector('.en-btn').classList.toggle('active', lang === 'en');
-    }
-    
-    // Check for saved preference
-    const savedLang = localStorage.getItem('preferredLang') || 'de';
-    switchLanguage(savedLang);
-  </script>
 </body>
 </html>
