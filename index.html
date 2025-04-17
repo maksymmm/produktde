@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Über 1 Million Produkte von deutschen Herstellern. Kostenloser Versand ab 50€.">
-  <meta name="keywords" content="Marktplatz, deutsche Produkte, Made in Germany, Online-Shopping">
+  <meta name="keywords" content="Made in Germany, deutsche Produkte, Online-Shop, German products">
   <meta name="author" content="Marktplatz GmbH">
   <meta name="robots" content="index, follow">
   <title>Marktplatz — Deutschlands größter Online-Marktplatz</title>
@@ -45,7 +45,6 @@
       background: var(--light);
     }
 
-    /* Preloader */
     .preloader {
       position: fixed;
       top: 0;
@@ -106,6 +105,24 @@
       outline: none;
     }
 
+    .language-switcher {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .language-switcher button {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--gray);
+    }
+
+    .language-switcher button.active {
+      color: var(--primary);
+      font-weight: bold;
+    }
+
     .hero-banner {
       height: 60vh;
       min-height: 500px;
@@ -129,11 +146,17 @@
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       transition: transform 0.3s, box-shadow 0.3s;
+      animation: slideUp 0.5s ease-in-out;
     }
 
     .product-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     .image-gallery {
@@ -162,6 +185,9 @@
     .btn-primary {
       background: var(--primary);
       color: white;
+      text-decoration: none;
+      display: block;
+      text-align: center;
     }
 
     .btn-primary:hover {
@@ -226,21 +252,23 @@
       </div>
 
       <form class="search-form" action="/search">
-        <input type="search" class="search-input" placeholder="Was suchen Sie heute?" aria-label="Produktsuche" list="search-suggestions">
-        <datalist id="search-suggestions">
-          <!-- Populated by JavaScript -->
-        </datalist>
+        <input type="search" class="search-input" placeholder="Was suchen Sie heute?" aria-label="Produktsuche" list="search-suggestions" data-lang-key="search_placeholder">
+        <datalist id="search-suggestions"></datalist>
         <button type="submit" class="search-btn" aria-label="Suchen">
           <i class="fas fa-search"></i>
         </button>
       </form>
 
       <nav class="user-nav">
-        <a href="/account" class="nav-link">
+        <div class="language-switcher">
+          <button class="language-btn active" data-lang="de">DE</button>
+          <button class="language-btn" data-lang="en">EN</button>
+        </div>
+        <a href="/account" class="nav-link" data-lang-key="account">
           <i class="far fa-user"></i>
           <span>Mein Konto</span>
         </a>
-        <a href="/cart" class="nav-link">
+        <a href="/cart" class="nav-link" data-lang-key="cart">
           <i class="fas fa-shopping-cart"></i>
           <span>Warenkorb</span>
         </a>
@@ -251,9 +279,9 @@
   <!-- Hero Section -->
   <section class="hero-banner">
     <div class="hero-content" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
-      <h1 style="font-size: 3rem; margin-bottom: 1rem;">Sommerschlussverkauf</h1>
-      <p style="font-size: 1.5rem; margin-bottom: 2rem;">Bis zu 50% Rabatt auf ausgewählte Artikel</p>
-      <a href="/angebote" class="btn btn-primary" style="padding: 1rem 2rem; border-radius: 50px; font-weight: bold; display: inline-block;">
+      <h1 style="font-size: 3rem; margin-bottom: 1rem;" data-lang-key="hero_title">Sommerschlussverkauf</h1>
+      <p style="font-size: 1.5rem; margin-bottom: 2rem;" data-lang-key="hero_subtitle">Bis zu 50% Rabatt auf ausgewählte Artikel</p>
+      <a href="/angebote" class="btn btn-primary" style="padding: 1rem 2rem; border-radius: 50px; font-weight: bold; display: inline-block;" data-lang-key="hero_cta">
         Jetzt entdecken
       </a>
     </div>
@@ -261,27 +289,27 @@
 
   <!-- Featured Categories -->
   <section style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
-    <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Beliebte Kategorien</h2>
+    <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;" data-lang-key="categories_title">Beliebte Kategorien</h2>
     <div class="image-gallery">
       <a href="/elektronik" class="category-card">
         <img src="https://example.com/images/electronics-category.jpg" alt="Elektronik Kategorie" class="gallery-image" loading="lazy" srcset="https://example.com/images/electronics-category-300.jpg 300w, https://example.com/images/electronics-category-600.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
         <div style="padding: 1rem; text-align: center;">
-          <h3>Elektronik</h3>
-          <p>Über 10.000 Artikel</p>
+          <h3 data-lang-key="category_electronics">Elektronik</h3>
+          <p data-lang-key="category_electronics_desc">Über 10.000 Artikel</p>
         </div>
       </a>
       <a href="/mode" class="category-card">
         <img src="https://example.com/images/fashion-category.jpg" alt="Mode Kategorie" class="gallery-image" loading="lazy" srcset="https://example.com/images/fashion-category-300.jpg 300w, https://example.com/images/fashion-category-600.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
         <div style="padding: 1rem; text-align: center;">
-          <h3>Mode</h3>
-          <p>Neue Kollektion</p>
+          <h3 data-lang-key="category_fashion">Mode</h3>
+          <p data-lang-key="category_fashion_desc">Neue Kollektion</p>
         </div>
       </a>
       <a href="/haushalt" class="category-card">
         <img src="https://example.com/images/home-category.jpg" alt="Haushalt Kategorie" class="gallery-image" loading="lazy" srcset="https://example.com/images/home-category-300.jpg 300w, https://example.com/images/home-category-600.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
         <div style="padding: 1rem; text-align: center;">
-          <h3>Haushalt</h3>
-          <p>Praktische Lösungen</p>
+          <h3 data-lang-key="category_home">Haushalt</h3>
+          <p data-lang-key="category_home_desc">Praktische Lösungen</p>
         </div>
       </a>
     </div>
@@ -290,7 +318,7 @@
   <!-- Product Showcase with Real German Products -->
   <section style="background: white; padding: 4rem 2rem;">
     <div style="max-width: 1200px; margin: 0 auto;">
-      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Bestseller — Made in Germany</h2>
+      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;" data-lang-key="bestsellers_title">Bestseller — Made in Germany</h2>
       <div class="image-gallery">
         <!-- Product 1: Bosch Washing Machine -->
         <div class="product-card">
@@ -298,14 +326,14 @@
             <img src="https://media3.bosch-home.com/product_shots/500x/WAU28T40/WAU28T40_01.jpg?$format=jpg" alt="Bosch Serie 6 Waschmaschine" class="gallery-image" loading="lazy" srcset="https://media3.bosch-home.com/product_shots/300x/WAU28T40/WAU28T40_01.jpg?$format=jpg 300w, https://media3.bosch-home.com/product_shots/600x/WAU28T40/WAU28T40_01.jpg?$format=jpg 600w" sizes="(max-width: 600px) 300px, 600px">
           </a>
           <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;">Bosch Serie 6 Waschmaschine</h3>
+            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_bosch_washer_title">Bosch Serie 6 Waschmaschine</h3>
             <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
               € 649,00
             </div>
-            <div style="color: var(--gray); margin-bottom: 1rem;">
+            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_bosch_washer_desc">
               Kostenloser Versand • Made in Germany
             </div>
-            <a href="https://www.bosch-home.de/produkte/waescherei/waschmaschinen/WAU28T40" style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px; text-align: center; text-decoration: none;">
+            <a href="https://www.bosch-home.de/produkte/waescherei/waschmaschinen/WAU28T40" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
               Jetzt kaufen
             </a>
           </div>
@@ -317,33 +345,90 @@
             <img src="https://www.wmf.com/dam/jcr:7b5c6c8c-6c8c-4c8c-9c8c-8c8c8c8c8c8c/Provence_Plus_5-teilig.jpg" alt="WMF Provence Plus Topfset" class="gallery-image" loading="lazy" srcset="https://www.wmf.com/dam/jcr:7b5c6c8c-6c8c-4c8c-9c8c-8c8c8c8c8c8c/Provence_Plus_5-teilig_300.jpg 300w, https://www.wmf.com/dam/jcr:7b5c6c8c-6c8c-4c8c-9c8c-8c8c8c8c8c8c/Provence_Plus_5-teilig_600.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
           </a>
           <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;">WMF Provence Plus Topfset 5-teilig</h3>
+            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_wmf_cookware_title">WMF Provence Plus Topfset 5-teilig</h3>
             <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
               € 199,99
             </div>
-            <div style="color: var(--gray); margin-bottom: 1rem;">
+            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_wmf_cookware_desc">
               Versand in 1-2 Tagen • Made in Germany
             </div>
-            <a href="https://www.wmf.com/de-de/produkte/kochen/topfsets/topfset-5-teilig-provence-plus.html" style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px; text-align: center; text-decoration: none;">
+            <a href="https://www.wmf.com/de-de/produkte/kochen/topfsets/topfset-5-teilig-provence-plus.html" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
               Jetzt kaufen
             </a>
           </div>
         </div>
 
-        <!-- Product 3: Adidas Running Shoes -->
+        <!-- Product 3: Siemens Coffee Machine -->
         <div class="product-card">
-          <a href="https://www.adidas.de/de/ultraboost-22/CG3008.html">
-            <img src="https://assets.adidas.com/images/w_600,f_auto,q_auto/CG3008_01_standard.jpg" alt="Adidas Ultraboost 22 Laufschuhe" class="gallery-image" loading="lazy" srcset="https://assets.adidas.com/images/w_300,f_auto,q_auto/CG3008_01_standard.jpg 300w, https://assets.adidas.com/images/w_600,f_auto,q_auto/CG3008_01_standard.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
+          <a href="https://www.siemens-home.bsh-group.com/de/produkte/kaffeevollautomaten/eq700-integral/TQ707D03">
+            <img src="https://www.siemens-home.bsh-group.com/de/dam/jcr:TQ707D03_01.jpg" alt="Siemens EQ.700 Kaffeevollautomat" class="gallery-image" loading="lazy" srcset="https://www.siemens-home.bsh-group.com/de/dam/jcr:TQ707D03_01_300.jpg 300w, https://www.siemens-home.bsh-group.com/de/dam/jcr:TQ707D03_01_600.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
           </a>
           <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;">Adidas Ultraboost 22 Laufschuhe</h3>
+            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_siemens_coffee_title">Siemens EQ.700 Kaffeevollautomat</h3>
             <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-              € 139,95
+              € 1.299,00
             </div>
-            <div style="color: var(--gray); margin-bottom: 1rem;">
-              Nur noch 3 verfügbar • Made in Germany
+            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_siemens_coffee_desc">
+              Kostenloser Versand • Made in Germany
             </div>
-            <a href="https://www.adidas.de/de/ultraboost-22/CG3008.html" style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px; text-align: center; text-decoration: none;">
+            <a href="https://www.siemens-home.bsh-group.com/de/produkte/kaffeevollautomaten/eq700-integral/TQ707D03" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
+              Jetzt kaufen
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 4: Ritter Sport Chocolate -->
+        <div class="product-card">
+          <a href="https://www.ritter-sport.de/de/produkte/100g-tafeln/knusperkeks">
+            <img src="https://www.ritter-sport.de/dam/jcr:knusperkeks_100g.jpg" alt="Ritter Sport Knusperkeks Schokolade" class="gallery-image" loading="lazy" srcset="https://www.ritter-sport.de/dam/jcr:knusperkeks_100g_300.jpg 300w, https://www.ritter-sport.de/dam/jcr:knusperkeks_100g_600.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
+          </a>
+          <div style="padding: 1.5rem;">
+            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_ritter_chocolate_title">Ritter Sport Knusperkeks Schokolade</h3>
+            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
+              € 1,49
+            </div>
+            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_ritter_chocolate_desc">
+              Versand in 1-2 Tagen • Made in Germany
+            </div>
+            <a href="https://www.ritter-sport.de/de/produkte/100g-tafeln/knusperkeks" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
+              Jetzt kaufen
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 5: Le Creuset Cast Iron Pan -->
+        <div class="product-card">
+          <a href="https://www.lecreuset.de/de_DE/p/gusseisen-bratpfanne-28-cm/LS2024-2872.html">
+            <img src="https://www.lecreuset.de/dam/jcr:bratpfanne_28cm.jpg" alt="Le Creuset Gusseisen Bratpfanne" class="gallery-image" loading="lazy" srcset="https://www.lecreuset.de/dam/jcr:bratpfanne_28cm_300.jpg 300w, https://www.lecreuset.de/dam/jcr:bratpfanne_28cm_600.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
+          </a>
+          <div style="padding: 1.5rem;">
+            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_lecreuset_pan_title">Le Creuset Gusseisen Bratpfanne 28cm</h3>
+            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
+              € 199,00
+            </div>
+            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_lecreuset_pan_desc">
+              Kostenloser Versand • Made in Germany
+            </div>
+            <a href="https://www.lecreuset.de/de_DE/p/gusseisen-bratpfanne-28-cm/LS2024-2872.html" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
+              Jetzt kaufen
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 6: Miele Vacuum Cleaner -->
+        <div class="product-card">
+          <a href="https://www.miele.de/de/staubsauger/bodenstaubsauger/complete-c3-active-8901230.html">
+            <img src="https://www.miele.de/dam/jcr:complete_c3_active.jpg" alt="Miele Complete C3 Staubsauger" class="gallery-image" loading="lazy" srcset="https://www.miele.de/dam/jcr:complete_c3_active_300.jpg 300w, https://www.miele.de/dam/jcr:complete_c3_active_600.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
+          </a>
+          <div style="padding: 1.5rem;">
+            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_miele_vacuum_title">Miele Complete C3 Staubsauger</h3>
+            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
+              € 299,00
+            </div>
+            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_miele_vacuum_desc">
+              Kostenloser Versand • Made in Germany
+            </div>
+            <a href="https://www.miele.de/de/staubsauger/bodenstaubsauger/complete-c3-active-8901230.html" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
               Jetzt kaufen
             </a>
           </div>
@@ -355,12 +440,12 @@
   <!-- Brand Showcase -->
   <section style="padding: 4rem 2rem; background: var(--light);">
     <div style="max-width: 1200px; margin: 0 auto;">
-      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Unsere Markenpartner</h2>
+      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;" data-lang-key="brands_title">Unsere Markenpartner</h2>
       <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 2rem;">
         <a href="https://www.bosch-home.de"><img src="https://www.bosch-home.com/dam/jcr:bosch-logo.png" alt="Bosch Logo" class="brand-logo" style="height: 50px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy"></a>
-        <a href="https://www.adidas.de"><img src="https://www.adidas.com/dam/jcr:adidas-logo.png" alt="Adidas Logo" class="brand-logo" style="height: 40px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy"></a>
-        <a href="https://www.siemens-home.bsh-group.com/de"><img src="https://www.siemens-home.bsh-group.com/dam/jcr:siemens-logo.png" alt="Siemens Logo" class="brand-logo" style="height: 45px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy"></a>
         <a href="https://www.wmf.com"><img src="https://www.wmf.com/dam/jcr:wmf-logo.png" alt="WMF Logo" class="brand-logo" style="height: 50px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy"></a>
+        <a href="https://www.siemens-home.bsh-group.com/de"><img src="https://www.siemens-home.bsh-group.com/dam/jcr:siemens-logo.png" alt="Siemens Logo" class="brand-logo" style="height: 45px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy"></a>
+        <a href="https://www.ritter-sport.de"><img src="https://www.ritter-sport.de/dam/jcr:ritter-sport-logo.png" alt="Ritter Sport Logo" class="brand-logo" style="height: 50px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy"></a>
       </div>
     </div>
   </section>
@@ -369,40 +454,40 @@
   <footer style="background: var(--dark); color: white; padding: 4rem 2rem;">
     <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
       <div>
-        <h3 style="margin-bottom: 1.5rem;">Einkaufen</h3>
+        <h3 style="margin-bottom: 1.5rem;" data-lang-key="footer_shop">Einkaufen</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;"><a href="/kategorien" style="color: #aaa; text-decoration: none;">Alle Kategorien</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/angebote" style="color: #aaa; text-decoration: none;">Angebote</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/neuheiten" style="color: #aaa; text-decoration: none;">Neuheiten</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/kategorien" style="color: #aaa; text-decoration: none;" data-lang-key="footer_all_categories">Alle Kategorien</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/angebote" style="color: #aaa; text-decoration: none;" data-lang-key="footer_offers">Angebote</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/neuheiten" style="color: #aaa; text-decoration: none;" data-lang-key="footer_new_arrivals">Neuheiten</a></li>
         </ul>
       </div>
       <div>
-        <h3 style="margin-bottom: 1.5rem;">Service</h3>
+        <h3 style="margin-bottom: 1.5rem;" data-lang-key="footer_service">Service</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;"><a href="/kundenservice" style="color: #aaa; text-decoration: none;">Kundenservice</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/rueckgabe" style="color: #aaa; text-decoration: none;">Rückgabe</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/versand" style="color: #aaa; text-decoration: none;">Versand</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/kundenservice" style="color: #aaa; text-decoration: none;" data-lang-key="footer_customer_service">Kundenservice</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/rueckgabe" style="color: #aaa; text-decoration: none;" data-lang-key="footer_returns">Rückgabe</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/versand" style="color: #aaa; text-decoration: none;" data-lang-key="footer_shipping">Versand</a></li>
         </ul>
       </div>
       <div>
-        <h3 style="margin-bottom: 1.5rem;">Unternehmen</h3>
+        <h3 style="margin-bottom: 1.5rem;" data-lang-key="footer_company">Unternehmen</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;"><a href="/ueber-uns" style="color: #aaa; text-decoration: none;">Über uns</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/karriere" style="color: #aaa; text-decoration: none;">Karriere</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/presse" style="color: #aaa; text-decoration: none;">Presse</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/ueber-uns" style="color: #aaa; text-decoration: none;" data-lang-key="footer_about_us">Über uns</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/karriere" style="color: #aaa; text-decoration: none;" data-lang-key="footer_careers">Karriere</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/presse" style="color: #aaa; text-decoration: none;" data-lang-key="footer_press">Presse</a></li>
         </ul>
       </div>
       <div>
-        <h3 style="margin-bottom: 1.5rem;">Rechtliches</h3>
+        <h3 style="margin-bottom: 1.5rem;" data-lang-key="footer_legal">Rechtliches</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;"><a href="/agb" style="color: #aaa; text-decoration: none;">AGB</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/datenschutz" style="color: #aaa; text-decoration: none;">Datenschutz</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/impressum" style="color: #aaa; text-decoration: none;">Impressum</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/agb" style="color: #aaa; text-decoration: none;" data-lang-key="footer_terms">AGB</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/datenschutz" style="color: #aaa; text-decoration: none;" data-lang-key="footer_privacy">Datenschutz</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/impressum" style="color: #aaa; text-decoration: none;" data-lang-key="footer_imprint">Impressum</a></li>
         </ul>
       </div>
     </div>
     <div style="max-width: 1200px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid #444; display: flex; justify-content: space-between; align-items: center;">
-      <div style="color: #777;">
+      <div style="color: #777;" data-lang-key="footer_copyright">
         © 2025 Marktplatz GmbH. Alle Rechte vorbehalten.
       </div>
       <div style="display: flex; gap: 1rem;">
@@ -413,17 +498,154 @@
     </div>
   </footer>
 
-  <!-- JavaScript for Preloader and Search Suggestions -->
+  <!-- JavaScript for Preloader, Language Switcher, and Search Suggestions -->
   <script>
-    // Hide preloader after page load
+    // Language Data
+    const translations = {
+      de: {
+        search_placeholder: "Was suchen Sie heute?",
+        account: "Mein Konto",
+        cart: "Warenkorb",
+        hero_title: "Sommerschlussverkauf",
+        hero_subtitle: "Bis zu 50% Rabatt auf ausgewählte Artikel",
+        hero_cta: "Jetzt entdecken",
+        categories_title: "Beliebte Kategorien",
+        category_electronics: "Elektronik",
+        category_electronics_desc: "Über 10.000 Artikel",
+        category_fashion: "Mode",
+        category_fashion_desc: "Neue Kollektion",
+        category_home: "Haushalt",
+        category_home_desc: "Praktische Lösungen",
+        bestsellers_title: "Bestseller — Made in Germany",
+        product_bosch_washer_title: "Bosch Serie 6 Waschmaschine",
+        product_bosch_washer_desc: "Kostenloser Versand • Made in Germany",
+        product_wmf_cookware_title: "WMF Provence Plus Topfset 5-teilig",
+        product_wmf_cookware_desc: "Versand in 1-2 Tagen • Made in Germany",
+        product_siemens_coffee_title: "Siemens EQ.700 Kaffeevollautomat",
+        product_siemens_coffee_desc: "Kostenloser Versand • Made in Germany",
+        product_ritter_chocolate_title: "Ritter Sport Knusperkeks Schokolade",
+        product_ritter_chocolate_desc: "Versand in 1-2 Tagen • Made in Germany",
+        product_lecreuset_pan_title: "Le Creuset Gusseisen Bratpfanne 28cm",
+        product_lecreuset_pan_desc: "Kostenloser Versand • Made in Germany",
+        product_miele_vacuum_title: "Miele Complete C3 Staubsauger",
+        product_miele_vacuum_desc: "Kostenloser Versand • Made in Germany",
+        buy_now: "Jetzt kaufen",
+        brands_title: "Unsere Markenpartner",
+        footer_shop: "Einkaufen",
+        footer_all_categories: "Alle Kategorien",
+        footer_offers: "Angebote",
+        footer_new_arrivals: "Neuheiten",
+        footer_service: "Service",
+        footer_customer_service: "Kundenservice",
+        footer_returns: "Rückgabe",
+        footer_shipping: "Versand",
+        footer_company: "Unternehmen",
+        footer_about_us: "Über uns",
+        footer_careers: "Karriere",
+        footer_press: "Presse",
+        footer_legal: "Rechtliches",
+        footer_terms: "AGB",
+        footer_privacy: "Datenschutz",
+        footer_imprint: "Impressum",
+        footer_copyright: "© 2025 Marktplatz GmbH. Alle Rechte vorbehalten."
+      },
+      en: {
+        search_placeholder: "What are you looking for today?",
+        account: "My Account",
+        cart: "Cart",
+        hero_title: "Summer Sale",
+        hero_subtitle: "Up to 50% off on selected items",
+        hero_cta: "Discover Now",
+        categories_title: "Popular Categories",
+        category_electronics: "Electronics",
+        category_electronics_desc: "Over 10,000 items",
+        category_fashion: "Fashion",
+        category_fashion_desc: "New Collection",
+        category_home: "Home",
+        category_home_desc: "Practical Solutions",
+        bestsellers_title: "Bestsellers — Made in Germany",
+        product_bosch_washer_title: "Bosch Serie 6 Washing Machine",
+        product_bosch_washer_desc: "Free Shipping • Made in Germany",
+        product_wmf_cookware_title: "WMF Provence Plus 5-Piece Cookware Set",
+        product_wmf_cookware_desc: "Shipping in 1-2 Days • Made in Germany",
+        product_siemens_coffee_title: "Siemens EQ.700 Coffee Machine",
+        product_siemens_coffee_desc: "Free Shipping • Made in Germany",
+        product_ritter_chocolate_title: "Ritter Sport Knusperkeks Chocolate",
+        product_ritter_chocolate_desc: "Shipping in 1-2 Days • Made in Germany",
+        product_lecreuset_pan_title: "Le Creuset Cast Iron Frying Pan 28cm",
+        product_lecreuset_pan_desc: "Free Shipping • Made in Germany",
+        product_miele_vacuum_title: "Miele Complete C3 Vacuum Cleaner",
+        product_miele_vacuum_desc: "Free Shipping • Made in Germany",
+        buy_now: "Buy Now",
+        brands_title: "Our Brand Partners",
+        footer_shop: "Shop",
+        footer_all_categories: "All Categories",
+        footer_offers: "Offers",
+        footer_new_arrivals: "New Arrivals",
+        footer_service: "Service",
+        footer_customer_service: "Customer Service",
+        footer_returns: "Returns",
+        footer_shipping: "Shipping",
+        footer_company: "Company",
+        footer_about_us: "About Us",
+        footer_careers: "Careers",
+        footer_press: "Press",
+        footer_legal: "Legal",
+        footer_terms: "Terms & Conditions",
+        footer_privacy: "Privacy Policy",
+        footer_imprint: "Imprint",
+        footer_copyright: "© 2025 Marktplatz GmbH. All rights reserved."
+      }
+    };
+
+    // Preloader
     window.addEventListener('load', () => {
       const preloader = document.querySelector('.preloader');
       preloader.classList.add('hidden');
     });
 
-    // Dynamic search suggestions (example)
+    // Language Switcher
+    const languageButtons = document.querySelectorAll('.language-btn');
+    const translatableElements = document.querySelectorAll('[data-lang-key]');
+
+    function setLanguage(lang) {
+      translatableElements.forEach(element => {
+        const key = element.getAttribute('data-lang-key');
+        if (translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+
+      // Update placeholder for search input
+      const searchInput = document.querySelector('.search-input');
+      searchInput.placeholder = translations[lang].search_placeholder;
+
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+
+      // Update active button
+      languageButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+    }
+
+    languageButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const lang = button.getAttribute('data-lang');
+        setLanguage(lang);
+      });
+    });
+
+    // Search Suggestions
     const searchInput = document.querySelector('.search-input');
-    const suggestions = ['Bosch Waschmaschine', 'WMF Topfset', 'Adidas Laufschuhe', 'Siemens Kühlschrank'];
+    const suggestions = [
+      'Bosch Waschmaschine',
+      'WMF Topfset',
+      'Siemens Kaffeevollautomat',
+      'Ritter Sport Schokolade',
+      'Le Creuset Bratpfanne',
+      'Miele Staubsauger'
+    ];
     const datalist = document.getElementById('search-suggestions');
 
     searchInput.addEventListener('input', (e) => {
