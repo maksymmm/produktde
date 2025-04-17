@@ -2,15 +2,27 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Marktplatz — Deutschlands größter Online-Marktplatz</title>
-  <meta name="description" content="Über 1 Million Produkte von deutschen Herstellern. Kostenloser Versand ab 50€.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="description" content="Über 1 Million Produkte von deutschen Herstellern. Kostenloser Versand ab 50€.">
+  <meta name="keywords" content="Marktplatz, deutsche Produkte, Made in Germany, Online-Shopping">
+  <meta name="author" content="Marktplatz GmbH">
+  <meta name="robots" content="index, follow">
+  <title>Marktplatz — Deutschlands größter Online-Marktplatz</title>
+
   <!-- Open Graph Meta -->
+  <meta property="og:title" content="Marktplatz — Deutschlands größter Online-Marktplatz">
+  <meta property="og:description" content="Über 1 Million Produkte von deutschen Herstellern. Kostenloser Versand ab 50€.">
   <meta property="og:image" content="https://example.com/images/social-preview.jpg">
-  
+  <meta property="og:url" content="https://example.com">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
   <style>
-    /* Modern CSS with Variables */
     :root {
       --primary: #4a2b82;
       --secondary: #5d3d9e;
@@ -19,21 +31,40 @@
       --dark: #2d2d2d;
       --gray: #6c757d;
     }
-    
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
       color: var(--dark);
       background: var(--light);
     }
-    
-    /* Improved Header */
+
+    /* Preloader */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s;
+    }
+
+    .preloader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
     .main-header {
       background: white;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -41,7 +72,7 @@
       top: 0;
       z-index: 100;
     }
-    
+
     .header-container {
       display: flex;
       align-items: center;
@@ -49,19 +80,18 @@
       margin: 0 auto;
       padding: 1rem;
     }
-    
+
     .logo img {
       height: 40px;
       width: auto;
     }
-    
-    /* Advanced Search */
+
     .search-form {
       flex: 1;
       margin: 0 2rem;
       position: relative;
     }
-    
+
     .search-input {
       width: 100%;
       padding: 0.75rem 1rem;
@@ -70,25 +100,29 @@
       font-size: 1rem;
       transition: all 0.3s;
     }
-    
+
     .search-input:focus {
       border-color: var(--primary);
       outline: none;
     }
-    
-    /* Hero Banner with Gradient Overlay */
+
     .hero-banner {
       height: 60vh;
       min-height: 500px;
       background: 
         linear-gradient(135deg, rgba(74,43,130,0.8) 0%, rgba(93,61,158,0.9) 100%),
-        url('images/hero-banner.jpg') center/cover no-repeat;
+        url('https://example.com/images/hero-banner.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       color: white;
+      animation: fadeIn 1s ease-in-out;
     }
-    
-    /* Product Cards with Hover Animation */
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     .product-card {
       background: white;
       border-radius: 12px;
@@ -96,19 +130,18 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    
+
     .product-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
-    
-    /* Responsive Image Gallery */
+
     .image-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 1.5rem;
     }
-    
+
     .gallery-image {
       width: 100%;
       height: 250px;
@@ -116,65 +149,92 @@
       border-radius: 8px;
       transition: opacity 0.3s;
     }
-    
+
     .gallery-image:hover {
       opacity: 0.9;
     }
-    
-    /* Micro-interactions */
+
     button, .btn {
       cursor: pointer;
       transition: all 0.2s;
     }
-    
+
     .btn-primary {
       background: var(--primary);
       color: white;
     }
-    
+
     .btn-primary:hover {
       background: var(--secondary);
       transform: translateY(-2px);
     }
-    
-    /* Responsive Breakpoints */
+
+    .brand-logo:hover {
+      filter: grayscale(0%) !important;
+      opacity: 1 !important;
+    }
+
     @media (max-width: 768px) {
       .header-container {
         flex-direction: column;
       }
-      
+
       .search-form {
         margin: 1rem 0;
         width: 100%;
       }
-      
+
       .hero-banner {
         height: 400px;
       }
+
+      footer div {
+        text-align: center;
+      }
     }
   </style>
-  
-  <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Marktplatz",
+      "url": "https://example.com",
+      "description": "Deutschlands größter Online-Marktplatz mit über 1 Million Produkten von deutschen Herstellern.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://example.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
 </head>
 <body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
+  </div>
 
   <!-- Enhanced Header -->
   <header class="main-header">
     <div class="header-container">
       <div class="logo">
         <a href="/">
-          <img src="images/logo.svg" alt="Marktplatz Logo" loading="lazy">
+          <img src="https://example.com/images/logo.svg" alt="Marktplatz Logo" loading="lazy">
         </a>
       </div>
-      
+
       <form class="search-form" action="/search">
-        <input type="search" class="search-input" placeholder="Was suchen Sie heute?" aria-label="Search">
-        <button type="submit" class="search-btn" aria-label="Search button">
+        <input type="search" class="search-input" placeholder="Was suchen Sie heute?" aria-label="Produktsuche" list="search-suggestions">
+        <datalist id="search-suggestions">
+          <!-- Populated by JavaScript -->
+        </datalist>
+        <button type="submit" class="search-btn" aria-label="Suchen">
           <i class="fas fa-search"></i>
         </button>
       </form>
-      
+
       <nav class="user-nav">
         <a href="/account" class="nav-link">
           <i class="far fa-user"></i>
@@ -188,7 +248,7 @@
     </div>
   </header>
 
-  <!-- Hero Section with Call-to-Action -->
+  <!-- Hero Section -->
   <section class="hero-banner">
     <div class="hero-content" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
       <h1 style="font-size: 3rem; margin-bottom: 1rem;">Sommerschlussverkauf</h1>
@@ -199,29 +259,26 @@
     </div>
   </section>
 
-  <!-- Featured Categories with Images -->
+  <!-- Featured Categories -->
   <section style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
     <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Beliebte Kategorien</h2>
-    
     <div class="image-gallery">
       <a href="/elektronik" class="category-card">
-        <img src="images/electronics-category.jpg" alt="Elektronik" class="gallery-image" loading="lazy">
+        <img src="https://example.com/images/electronics-category.jpg" alt="Elektronik Kategorie" class="gallery-image" loading="lazy" srcset="https://example.com/images/electronics-category-300.jpg 300w, https://example.com/images/electronics-category-600.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
         <div style="padding: 1rem; text-align: center;">
           <h3>Elektronik</h3>
           <p>Über 10.000 Artikel</p>
         </div>
       </a>
-      
       <a href="/mode" class="category-card">
-        <img src="images/fashion-category.jpg" alt="Mode" class="gallery-image" loading="lazy">
+        <img src="https://example.com/images/fashion-category.jpg" alt="Mode Kategorie" class="gallery-image" loading="lazy" srcset="https://example.com/images/fashion-category-300.jpg 300w, https://example.com/images/fashion-category-600.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
         <div style="padding: 1rem; text-align: center;">
           <h3>Mode</h3>
           <p>Neue Kollektion</p>
         </div>
       </a>
-      
       <a href="/haushalt" class="category-card">
-        <img src="images/home-category.jpg" alt="Haushalt" class="gallery-image" loading="lazy">
+        <img src="https://example.com/images/home-category.jpg" alt="Haushalt Kategorie" class="gallery-image" loading="lazy" srcset="https://example.com/images/home-category-300.jpg 300w, https://example.com/images/home-category-600.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
         <div style="padding: 1rem; text-align: center;">
           <h3>Haushalt</h3>
           <p>Praktische Lösungen</p>
@@ -230,60 +287,65 @@
     </div>
   </section>
 
-  <!-- Product Showcase -->
+  <!-- Product Showcase with Real German Products -->
   <section style="background: white; padding: 4rem 2rem;">
     <div style="max-width: 1200px; margin: 0 auto;">
-      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Bestseller</h2>
-      
+      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Bestseller — Made in Germany</h2>
       <div class="image-gallery">
-        <!-- Product 1 -->
+        <!-- Product 1: Bosch Washing Machine -->
         <div class="product-card">
-          <img src="images/product1.jpg" alt="Bosch Waschmaschine" class="gallery-image" loading="lazy">
+          <a href="https://www.bosch-home.de/produkte/waescherei/waschmaschinen/WAU28T40">
+            <img src="https://media3.bosch-home.com/product_shots/500x/WAU28T40/WAU28T40_01.jpg?$format=jpg" alt="Bosch Serie 6 Waschmaschine" class="gallery-image" loading="lazy" srcset="https://media3.bosch-home.com/product_shots/300x/WAU28T40/WAU28T40_01.jpg?$format=jpg 300w, https://media3.bosch-home.com/product_shots/600x/WAU28T40/WAU28T40_01.jpg?$format=jpg 600w" sizes="(max-width: 600px) 300px, 600px">
+          </a>
           <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;">Bosch Waschmaschine</h3>
+            <h3 style="margin-bottom: 0.5rem;">Bosch Serie 6 Waschmaschine</h3>
             <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-              € 599,00
+              € 649,00
             </div>
             <div style="color: var(--gray); margin-bottom: 1rem;">
-              Kostenloser Versand
+              Kostenloser Versand • Made in Germany
             </div>
-            <button style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px;">
-              In den Warenkorb
-            </button>
+            <a href="https://www.bosch-home.de/produkte/waescherei/waschmaschinen/WAU28T40" style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px; text-align: center; text-decoration: none;">
+              Jetzt kaufen
+            </a>
           </div>
         </div>
-        
-        <!-- Product 2 -->
+
+        <!-- Product 2: WMF Cookware Set -->
         <div class="product-card">
-          <img src="images/product2.jpg" alt="Smartwatch" class="gallery-image" loading="lazy">
+          <a href="https://www.wmf.com/de-de/produkte/kochen/topfsets/topfset-5-teilig-provence-plus.html">
+            <img src="https://www.wmf.com/dam/jcr:7b5c6c8c-6c8c-4c8c-9c8c-8c8c8c8c8c8c/Provence_Plus_5-teilig.jpg" alt="WMF Provence Plus Topfset" class="gallery-image" loading="lazy" srcset="https://www.wmf.com/dam/jcr:7b5c6c8c-6c8c-4c8c-9c8c-8c8c8c8c8c8c/Provence_Plus_5-teilig_300.jpg 300w, https://www.wmf.com/dam/jcr:7b5c6c8c-6c8c-4c8c-9c8c-8c8c8c8c8c8c/Provence_Plus_5-teilig_600.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
+          </a>
           <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;">Smartwatch Pro</h3>
+            <h3 style="margin-bottom: 0.5rem;">WMF Provence Plus Topfset 5-teilig</h3>
             <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
               € 199,99
             </div>
             <div style="color: var(--gray); margin-bottom: 1rem;">
-              Versand in 1-2 Tagen
+              Versand in 1-2 Tagen • Made in Germany
             </div>
-            <button style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px;">
-              In den Warenkorb
-            </button>
+            <a href="https://www.wmf.com/de-de/produkte/kochen/topfsets/topfset-5-teilig-provence-plus.html" style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px; text-align: center; text-decoration: none;">
+              Jetzt kaufen
+            </a>
           </div>
         </div>
-        
-        <!-- Product 3 -->
+
+        <!-- Product 3: Adidas Running Shoes -->
         <div class="product-card">
-          <img src="images/product3.jpg" alt="Laufschuhe" class="gallery-image" loading="lazy">
+          <a href="https://www.adidas.de/de/ultraboost-22/CG3008.html">
+            <img src="https://assets.adidas.com/images/w_600,f_auto,q_auto/CG3008_01_standard.jpg" alt="Adidas Ultraboost 22 Laufschuhe" class="gallery-image" loading="lazy" srcset="https://assets.adidas.com/images/w_300,f_auto,q_auto/CG3008_01_standard.jpg 300w, https://assets.adidas.com/images/w_600,f_auto,q_auto/CG3008_01_standard.jpg 600w" sizes="(max-width: 600px) 300px, 600px">
+          </a>
           <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;">Laufschuhe Premium</h3>
+            <h3 style="margin-bottom: 0.5rem;">Adidas Ultraboost 22 Laufschuhe</h3>
             <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-              € 129,95
+              € 139,95
             </div>
             <div style="color: var(--gray); margin-bottom: 1rem;">
-              Nur noch 3 verfügbar
+              Nur noch 3 verfügbar • Made in Germany
             </div>
-            <button style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px;">
-              In den Warenkorb
-            </button>
+            <a href="https://www.adidas.de/de/ultraboost-22/CG3008.html" style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px; text-align: center; text-decoration: none;">
+              Jetzt kaufen
+            </a>
           </div>
         </div>
       </div>
@@ -294,12 +356,11 @@
   <section style="padding: 4rem 2rem; background: var(--light);">
     <div style="max-width: 1200px; margin: 0 auto;">
       <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">Unsere Markenpartner</h2>
-      
       <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 2rem;">
-        <img src="images/bosch-logo.png" alt="Bosch" style="height: 50px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy">
-        <img src="images/adidas-logo.png" alt="Adidas" style="height: 40px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy">
-        <img src="images/siemens-logo.png" alt="Siemens" style="height: 45px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy">
-        <img src="images/nivea-logo.png" alt="Nivea" style="height: 50px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy">
+        <a href="https://www.bosch-home.de"><img src="https://www.bosch-home.com/dam/jcr:bosch-logo.png" alt="Bosch Logo" class="brand-logo" style="height: 50px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy"></a>
+        <a href="https://www.adidas.de"><img src="https://www.adidas.com/dam/jcr:adidas-logo.png" alt="Adidas Logo" class="brand-logo" style="height: 40px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy"></a>
+        <a href="https://www.siemens-home.bsh-group.com/de"><img src="https://www.siemens-home.bsh-group.com/dam/jcr:siemens-logo.png" alt="Siemens Logo" class="brand-logo" style="height: 45px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy"></a>
+        <a href="https://www.wmf.com"><img src="https://www.wmf.com/dam/jcr:wmf-logo.png" alt="WMF Logo" class="brand-logo" style="height: 50px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s;" loading="lazy"></a>
       </div>
     </div>
   </section>
@@ -310,51 +371,74 @@
       <div>
         <h3 style="margin-bottom: 1.5rem;">Einkaufen</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Alle Kategorien</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Angebote</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Neuheiten</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/kategorien" style="color: #aaa; text-decoration: none;">Alle Kategorien</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/angebote" style="color: #aaa; text-decoration: none;">Angebote</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/neuheiten" style="color: #aaa; text-decoration: none;">Neuheiten</a></li>
         </ul>
       </div>
-      
       <div>
         <h3 style="margin-bottom: 1.5rem;">Service</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Kundenservice</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Rückgabe</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Versand</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/kundenservice" style="color: #aaa; text-decoration: none;">Kundenservice</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/rueckgabe" style="color: #aaa; text-decoration: none;">Rückgabe</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/versand" style="color: #aaa; text-decoration: none;">Versand</a></li>
         </ul>
       </div>
-      
       <div>
         <h3 style="margin-bottom: 1.5rem;">Unternehmen</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Über uns</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Karriere</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Presse</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/ueber-uns" style="color: #aaa; text-decoration: none;">Über uns</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/karriere" style="color: #aaa; text-decoration: none;">Karriere</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/presse" style="color: #aaa; text-decoration: none;">Presse</a></li>
         </ul>
       </div>
-      
       <div>
         <h3 style="margin-bottom: 1.5rem;">Rechtliches</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">AGB</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Datenschutz</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #aaa; text-decoration: none;">Impressum</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/agb" style="color: #aaa; text-decoration: none;">AGB</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/datenschutz" style="color: #aaa; text-decoration: none;">Datenschutz</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="/impressum" style="color: #aaa; text-decoration: none;">Impressum</a></li>
         </ul>
       </div>
     </div>
-    
     <div style="max-width: 1200px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid #444; display: flex; justify-content: space-between; align-items: center;">
       <div style="color: #777;">
-        &copy; 2023 Marktplatz GmbH. Alle Rechte vorbehalten.
+        © 2025 Marktplatz GmbH. Alle Rechte vorbehalten.
       </div>
       <div style="display: flex; gap: 1rem;">
-        <a href="#"><i class="fab fa-facebook-f" style="color: #aaa;"></i></a>
-        <a href="#"><i class="fab fa-instagram" style="color: #aaa;"></i></a>
-        <a href="#"><i class="fab fa-twitter" style="color: #aaa;"></i></a>
+        <a href="https://facebook.com"><i class="fab fa-facebook-f" style="color: #aaa;"></i></a>
+        <a href="https://instagram.com"><i class="fab fa-instagram" style="color: #aaa;"></i></a>
+        <a href="https://twitter.com"><i class="fab fa-twitter" style="color: #aaa;"></i></a>
       </div>
     </div>
   </footer>
 
+  <!-- JavaScript for Preloader and Search Suggestions -->
+  <script>
+    // Hide preloader after page load
+    window.addEventListener('load', () => {
+      const preloader = document.querySelector('.preloader');
+      preloader.classList.add('hidden');
+    });
+
+    // Dynamic search suggestions (example)
+    const searchInput = document.querySelector('.search-input');
+    const suggestions = ['Bosch Waschmaschine', 'WMF Topfset', 'Adidas Laufschuhe', 'Siemens Kühlschrank'];
+    const datalist = document.getElementById('search-suggestions');
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      datalist.innerHTML = '';
+      if (query) {
+        suggestions
+          .filter(item => item.toLowerCase().includes(query))
+          .forEach(item => {
+            const option = document.createElement('option');
+            option.value = item;
+            datalist.appendChild(option);
+          });
+      }
+    });
+  </script>
 </body>
 </html>
