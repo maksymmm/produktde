@@ -1,238 +1,25 @@
+<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Über 1 Million Produkte von deutschen Herstellern. Kostenloser Versand ab 50€.">
-  <meta name="keywords" content="Made in Germany, deutsche Produkte, Online-Shop, German products">
-  <meta name="author" content="Marktplatz GmbH">
-  <meta name="robots" content="index, follow">
-  <title>Marktplatz — Deutschlands größter Online-Marktplatz</title>
-
-  <!-- Open Graph Meta -->
-  <meta property="og:title" content="Marktplatz — Deutschlands größter Online-Marktplatz">
-  <meta property="og:description" content="Über 1 Million Produkte von deutschen Herstellern. Kostenloser Versand ab 50€.">
-  <meta property="og:image" content="https://via.placeholder.com/1200x630">
-  <meta property="og:url" content="https://marktplatz.de">
-  <meta property="og:type" content="website">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
-
-  <!-- Font Awesome for Icons -->
+  <meta name="description" content="ProduktDE — Ihr Marktplatz für Produkte Made in Germany">
+  <meta name="keywords" content="Made in Germany, deutsche Produkte, ProduktDE, German products">
+  <title>ProduktDE — Made in Germany</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-  <style>
-    :root {
-      --primary: #4a2b82;
-      --secondary: #5d3d9e;
-      --accent: #e53935;
-      --light: #f8f9fa;
-      --dark: #2d2d2d;
-      --gray: #6c757d;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-      color: var(--dark);
-      background: var(--light);
-    }
-
-    .preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.5s;
-    }
-
-    .preloader.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .main-header {
-      background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .header-container {
-      display: flex;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem;
-    }
-
-    .logo img {
-      height: 40px;
-      width: auto;
-    }
-
-    .search-form {
-      flex: 1;
-      margin: 0 2rem;
-      position: relative;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 2px solid var(--light);
-      border-radius: 50px;
-      font-size: 1rem;
-      transition: all 0.3s;
-    }
-
-    .search-input:focus {
-      border-color: var(--primary);
-      outline: none;
-    }
-
-    .language-switcher {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .language-switcher button {
-      background: none;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-      color: var(--gray);
-    }
-
-    .language-switcher button.active {
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    .hero-banner {
-      height: 60vh;
-      min-height: 500px;
-      background: 
-        linear-gradient(135deg, rgba(74,43,130,0.8) 0%, rgba(93,61,158,0.9) 100%),
-        url('https://via.placeholder.com/1920x1080?text=Hero+Banner') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      color: white;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .product-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: slideUp 0.5s ease-in-out;
-    }
-
-    .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .image-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .gallery-image {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 8px;
-      transition: opacity 0.3s;
-    }
-
-    .gallery-image:hover {
-      opacity: 0.9;
-    }
-
-    button, .btn {
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-      text-decoration: none;
-      display: block;
-      text-align: center;
-      padding: 0.75rem;
-      border-radius: 6px;
-    }
-
-    .btn-primary:hover {
-      background: var(--secondary);
-      transform: translateY(-2px);
-    }
-
-    .brand-logo:hover {
-      filter: grayscale(0%) !important;
-      opacity: 1 !important;
-    }
-
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-      }
-
-      .search-form {
-        margin: 1rem 0;
-        width: 100%;
-      }
-
-      .hero-banner {
-        height: 400px;
-      }
-
-      footer div {
-        text-align: center;
-      }
-    }
-  </style>
-
   <!-- Structured Data for SEO -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Marktplatz",
-      "url": "https://marktplatz.de",
-      "description": "Deutschlands größter Online-Marktplatz mit über 1 Million Produkten von deutschen Herstellern.",
+      "name": "ProduktDE",
+      "url": "https://produktde.de",
+      "description": "Marktplatz für Produkte Made in Germany.",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://marktplatz.de/search?q={search_term_string}",
+        "target": "https://produktde.de/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
@@ -241,487 +28,94 @@
 <body>
   <!-- Preloader -->
   <div class="preloader">
-    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
+    <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
   </div>
 
-  <!-- Enhanced Header -->
+  <!-- Header -->
   <header class="main-header">
     <div class="header-container">
       <div class="logo">
-        <a href="/">
-          <img src="https://via.placeholder.com/150x40?text=Marktplatz+Logo" alt="Marktplatz Logo" loading="lazy">
-        </a>
+        <a href="/"><img src="https://via.placeholder.com/150x40?text=ProduktDE+Logo" alt="ProduktDE Logo" loading="lazy"></a>
       </div>
-
       <form class="search-form" action="/search">
-        <input type="search" class="search-input" placeholder="Was suchen Sie heute?" aria-label="Produktsuche" list="search-suggestions" data-lang-key="search_placeholder">
+        <input type="search" class="search-input" placeholder="Was suchen Sie heute?" list="search-suggestions" data-lang-key="search_placeholder">
         <datalist id="search-suggestions"></datalist>
-        <button type="submit" class="search-btn" aria-label="Suchen">
-          <i class="fas fa-search"></i>
-        </button>
+        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
       </form>
-
       <nav class="user-nav">
         <div class="language-switcher">
           <button class="language-btn active" data-lang="de">DE</button>
           <button class="language-btn" data-lang="en">EN</button>
         </div>
-        <a href="/account" class="nav-link" data-lang-key="account">
-          <i class="far fa-user"></i>
-          <span>Mein Konto</span>
-        </a>
-        <a href="/cart" class="nav-link" data-lang-key="cart">
-          <i class="fas fa-shopping-cart"></i>
-          <span>Warenkorb</span>
-        </a>
+        <a href="/account" class="nav-link" data-lang-key="account"><i class="far fa-user"></i> <span>Mein Konto</span></a>
+        <a href="/cart" class="nav-link" data-lang-key="cart"><i class="fas fa-shopping-cart"></i> <span>Warenkorb</span></a>
       </nav>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero-banner">
-    <div class="hero-content" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
-      <h1 style="font-size: 3rem; margin-bottom: 1rem;" data-lang-key="hero_title">Sommerschlussverkauf</h1>
-      <p style="font-size: 1.5rem; margin-bottom: 2rem;" data-lang-key="hero_subtitle">Bis zu 50% Rabatt auf ausgewählte Artikel</p>
-      <a href="/angebote" class="btn btn-primary" style="padding: 1rem 2rem; border-radius: 50px; font-weight: bold; display: inline-block;" data-lang-key="hero_cta">
-        Jetzt entdecken
-      </a>
+    <div class="hero-content">
+      <h1 data-lang-key="hero_title">Willkommen bei ProduktDE</h1>
+      <p data-lang-key="hero_subtitle">Entdecken Sie hochwertige Produkte Made in Germany</p>
+      <a href="/angebote" class="btn btn-primary" data-lang-key="hero_cta">Jetzt shoppen</a>
     </div>
   </section>
 
-  <!-- Product Showcase with Real German Products -->
+  <!-- Product Showcase -->
   <section style="background: white; padding: 4rem 2rem;">
     <div style="max-width: 1200px; margin: 0 auto;">
-      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;" data-lang-key="bestsellers_title">Bestseller — Made in Germany</h2>
-      <div class="image-gallery">
-        <!-- Product 1: Bosch Washing Machine -->
-        <div class="product-card">
-          <a href="https://www.amazon.de/Bosch-WAU28T40-Serie-Waschmaschine-Frontlader/dp/B08J8C7V5P">
-            <img src="https://m.media-amazon.com/images/I/71xQ1t3vW4L._AC_SL1500_.jpg" alt="Bosch Serie 6 Waschmaschine" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Bosch+Waschmaschine'">
-          </a>
-          <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_bosch_washer_title">Bosch Serie 6 Waschmaschine</h3>
-            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-              € 649,00
-            </div>
-            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_bosch_washer_desc">
-              Kostenloser Versand • Made in Germany
-            </div>
-            <a href="https://www.amazon.de/Bosch-WAU28T40-Serie-Waschmaschine-Frontlader/dp/B08J8C7V5P" class="btn btn-primary" data-lang-key="buy_now">
-              Jetzt kaufen
-            </a>
-          </div>
-        </div>
-
-        <!-- Product 2: WMF Cookware Set -->
-        <div class="product-card">
-          <a href="https://www.amazon.de/WMF-Provence-Topfset-5-teilig-Edelstahl/dp/B00008WWT2">
-            <img src="https://m.media-amazon.com/images/I/71vL8zB5J7L._AC_SL1500_.jpg" alt="WMF Provence Plus Topfset" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=WMF+Topfset'">
-          </a>
-          <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_wmf_cookware_title">WMF Provence Plus Topfset 5-teilig</h3>
-            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-              € 199,99
-            </div>
-            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_wmf_cookware_desc">
-              Versand in 1-2 Tagen • Made in Germany
-            </div>
-            <a href="https://www.amazon.de/WMF-Provence-Topfset-5-teilig-Edelstahl/dp/B00008WWT2" class="btn btn-primary" data-lang-key="buy_now">
-              Jetzt kaufen
-            </a>
-          </div>
-        </div>
-
-        <!-- Product 3: Siemens Coffee Machine -->
-        <div class="product-card">
-          <a href="https://www.amazon.de/Siemens-EQ-700-Kaffeevollautomat-TQ707D03/dp/B09K4J7W9Q">
-            <img src="https://m.media-amazon.com/images/I/61pQz4J8L3L._AC_SL1500_.jpg" alt="Siemens EQ.700 Kaffeevollautomat" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Siemens+Kaffeevollautomat'">
-          </a>
-          <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_siemens_coffee_title">Siemens EQ.700 Kaffeevollautomat</h3>
-            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-              € 1.299,00
-            </div>
-            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_siemens_coffee_desc">
-              Kostenloser Versand • Made in Germany
-            </div>
-            <a href="https://www.amazon.de/Siemens-EQ-700-Kaffeevollautomat-TQ707D03/dp/B09K4J7W9Q" class="btn btn-primary" data-lang-key="buy_now">
-              Jetzt kaufen
-            </a>
-          </div>
-        </div>
-
-        <!-- Product 4: Ritter Sport Chocolate -->
-        <div class="product-card">
-          <a href="https://www.amazon.de/Ritter-Sport-Knusperkeks-Schokolade-100g/dp/B0000504ZQ">
-            <img src="https://m.media-amazon.com/images/I/51xZ7vY8L2L._AC_SL1000_.jpg" alt="Ritter Sport Knusperkeks Schokolade" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Ritter+Sport+Schokolade'">
-          </a>
-          <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_ritter_chocolate_title">Ritter Sport Knusperkeks Schokolade</h3>
-            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-              € 1,49
-            </div>
-            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_ritter_chocolate_desc">
-              Versand in 1-2 Tagen • Made in Germany
-            </div>
-            <a href="https://www.amazon.de/Ritter-Sport-Knusperkeks-Schokolade-100g/dp/B0000504ZQ" class="btn btn-primary" data-lang-key="buy_now">
-              Jetzt kaufen
-            </a>
-          </div>
-        </div>
-
-        <!-- Product 5: Miele Vacuum Cleaner -->
-        <div class="product-card">
-          <a href="https://www.amazon.de/Miele-Complete-C3-Staubsauger-PowerLine/dp/B08F7X4Y7P">
-            <img src="https://m.media-amazon.com/images/I/71qX8Z5J7YL._AC_SL1500_.jpg" alt="Miele Complete C3 Staubsauger" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Miele+Staubsauger'">
-          </a>
-          <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_miele_vacuum_title">Miele Complete C3 Staubsauger</h3>
-            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-              € 299,00
-            </div>
-            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_miele_vacuum_desc">
-              Kostenloser Versand • Made in Germany
-            </div>
-            <a href="https://www.amazon.de/Miele-Complete-C3-Staubsauger-PowerLine/dp/B08F7X4Y7P" class="btn btn-primary" data-lang-key="buy_now">
-              Jetzt kaufen
-            </a>
-          </div>
-        </div>
-
-        <!-- Product 6: Nivea Creme -->
-        <div class="product-card">
-          <a href="https://www.amazon.de/NIVEA-Creme-250-ml/dp/B0000507ZQ">
-            <img src="https://m.media-amazon.com/images/I/61vY8Z5J7YL._AC_SL1500_.jpg" alt="Nivea Creme" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Nivea+Creme'">
-          </a>
-          <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_nivea_creme_title">Nivea Creme</h3>
-            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-              € 3,99
-            </div>
-            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_nivea_creme_desc">
-              Versand in 1-2 Tagen • Made in Germany
-            </div>
-            <a href="https://www.amazon.de/NIVEA-Creme-250-ml/dp/B0000507ZQ" class="btn btn-primary" data-lang-key="buy_now">
-              Jetzt kaufen
-            </a>
-          </div>
-        </div>
-
-        <!-- Product 7: Dr. Oetker Pizza -->
-        <div class="product-card">
-          <a href="https://www.amazon.de/Dr-Oetker-Ristorante-Pizza-Margherita/dp/B0000507ZR">
-            <img src="https://m.media-amazon.com/images/I/51xY8Z5J7YL._AC_SL1000_.jpg" alt="Dr. Oetker Ristorante Pizza" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Dr+Oetker+Pizza'">
-          </a>
-          <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_oetker_pizza_title">Dr. Oetker Ristorante Pizza</h3>
-            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-              € 2,99
-            </div>
-            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_oetker_pizza_desc">
-              Versand in 1-2 Tagen • Made in Germany
-            </div>
-            <a href="https://www.amazon.de/Dr-Oetker-Ristorante-Pizza-Margherita/dp/B0000507ZR" class="btn btn-primary" data-lang-key="buy_now">
-              Jetzt kaufen
-            </a>
-          </div>
-        </div>
-
-        <!-- Product 8: Fissler Skillet -->
-        <div class="product-card">
-          <a href="https://www.amazon.de/Fissler-Vitaquick-Bratpfanne-28cm/dp/B07F8X4Y7Q">
-            <img src="https://m.media-amazon.com/images/I/71qX8Z5J7YL._AC_SL1500_.jpg" alt="Fissler Vitaquick Bratpfanne" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Fissler+Bratpfanne'">
-          </a>
-          <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_fissler_skillet_title">Fissler Vitaquick Bratpfanne</h3>
-            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-              € 149,00
-            </div>
-            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_fissler_skillet_desc">
-              Kostenloser Versand • Made in Germany
-            </div>
-            <a href="https://www.amazon.de/Fissler-Vitaquick-Bratpfanne-28cm/dp/B07F8X4Y7Q" class="btn btn-primary" data-lang-key="buy_now">
-              Jetzt kaufen
-            </a>
-          </div>
-        </div>
-
-        <!-- Product 9: Braun Hand Mixer -->
-        <div class="product-card">
-          <a href="https://www.amazon.de/Braun-MultiQuick-7-Handmixer/dp/B08F7X4Y7R">
-            <img src="https://m.media-amazon.com/images/I/61vY8Z5J7YL._AC_SL1500_.jpg" alt="Braun MultiQuick 7 Handmixer" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Braun+Handmixer'">
-          </a>
-          <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_braun_mixer_title">Braun MultiQuick 7 Handmixer</h3>
-            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-              € 79,99
-            </div>
-            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_braun_mixer_desc">
-              Versand in 1-2 Tagen • Made in Germany
-            </div>
-            <a href="https://www.amazon.de/Braun-MultiQuick-7-Handmixer/dp/B08F7X4Y7R" class="btn btn-primary" data-lang-key="buy_now">
-              Jetzt kaufen
-            </a>
-          </div>
-        </div>
-
-        <!-- Product 10: AEG Dishwasher -->
-        <div class="product-card">
-          <a href="https://www.amazon.de/AEG-FSB53617Z-Geschirrsp%C3%BCler-Standger%C3%A4t/dp/B09K4J7W9R">
-            <img src="https://m.media-amazon.com/images/I/71qX8Z5J7YL._AC_SL1500_.jpg" alt="AEG FSB53617Z Geschirrspüler" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=AEG+Geschirrspueler'">
-          </a>
-          <div style="padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_aeg_dishwasher_title">AEG FSB53617Z Geschirrspüler</h3>
-            <div style="color: var(--accent); font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">
-              € 599,00
-            </div>
-            <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_aeg_dishwasher_desc">
-              Kostenloser Versand • Made in Germany
-            </div>
-            <a href="https://www.amazon.de/AEG-FSB53617Z-Geschirrsp%C3%BCler-Standger%C3%A4t/dp/B09K4J7W9R" class="btn btn-primary" data-lang-key="buy_now">
-              Jetzt kaufen
-            </a>
-          </div>
-        </div>
-      </div>
+      <h2 data-lang-key="bestsellers_title">Bestseller — Made in Germany</h2>
+      <div class="image-gallery" id="product-list"></div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer style="background: var(--dark); color: white; padding: 4rem 2rem;">
+  <footer style="background: #2d2d2d; color: white; padding: 4rem 2rem;">
     <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
       <div>
-        <h3 style="margin-bottom: 1.5rem;" data-lang-key="footer_shop">Einkaufen</h3>
+        <h3 data-lang-key="footer_shop">Einkaufen</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;"><a href="/kategorien" style="color: #aaa; text-decoration: none;" data-lang-key="footer_all_categories">Alle Kategorien</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/angebote" style="color: #aaa; text-decoration: none;" data-lang-key="footer_offers">Angebote</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/neuheiten" style="color: #aaa; text-decoration: none;" data-lang-key="footer_new_arrivals">Neuheiten</a></li>
+          <li><a href="/kategorien" data-lang-key="footer_all_categories">Alle Kategorien</a></li>
+          <li><a href="/angebote" data-lang-key="footer_offers">Angebote</a></li>
+          <li><a href="/neuheiten" data-lang-key="footer_new_arrivals">Neuheiten</a></li>
         </ul>
       </div>
       <div>
-        <h3 style="margin-bottom: 1.5rem;" data-lang-key="footer_service">Service</h3>
+        <h3 data-lang-key="footer_service">Service</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;"><a href="/kundenservice" style="color: #aaa; text-decoration: none;" data-lang-key="footer_customer_service">Kundenservice</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/rueckgabe" style="color: #aaa; text-decoration: none;" data-lang-key="footer_returns">Rückgabe</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/versand" style="color: #aaa; text-decoration: none;" data-lang-key="footer_shipping">Versand</a></li>
+          <li><a href="/kundenservice" data-lang-key="footer_customer_service">Kundenservice</a></li>
+          <li><a href="/rueckgabe" data-lang-key="footer_returns">Rückgabe</a></li>
+          <li><a href="/versand" data-lang-key="footer_shipping">Versand</a></li>
         </ul>
       </div>
       <div>
-        <h3 style="margin-bottom: 1.5rem;" data-lang-key="footer_company">Unternehmen</h3>
+        <h3 data-lang-key="footer_company">Unternehmen</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;"><a href="/ueber-uns" style="color: #aaa; text-decoration: none;" data-lang-key="footer_about_us">Über uns</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/karriere" style="color: #aaa; text-decoration: none;" data-lang-key="footer_careers">Karriere</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/presse" style="color: #aaa; text-decoration: none;" data-lang-key="footer_press">Presse</a></li>
+          <li><a href="/ueber-uns" data-lang-key="footer_about_us">Über uns</a></li>
+          <li><a href="/karriere" data-lang-key="footer_careers">Karriere</a></li>
+          <li><a href="/presse" data-lang-key="footer_press">Presse</a></li>
         </ul>
       </div>
       <div>
-        <h3 style="margin-bottom: 1.5rem;" data-lang-key="footer_legal">Rechtliches</h3>
+        <h3 data-lang-key="footer_legal">Rechtliches</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 0.5rem;"><a href="/agb" style="color: #aaa; text-decoration: none;" data-lang-key="footer_terms">AGB</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/datenschutz" style="color: #aaa; text-decoration: none;" data-lang-key="footer_privacy">Datenschutz</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="/impressum" style="color: #aaa; text-decoration: none;" data-lang-key="footer_imprint">Impressum</a></li>
+          <li><a href="/impressum.html" data-lang-key="footer_imprint">Impressum</a></li>
+          <li><a href="/datenschutz.html" data-lang-key="footer_privacy">Datenschutz</a></li>
+          <li><a href="/agb" data-lang-key="footer_terms">AGB</a></li>
         </ul>
       </div>
     </div>
-    <div style="max-width: 1200px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid #444; display: flex; justify-content: space-between; align-items: center;">
-      <div style="color: #777;" data-lang-key="footer_copyright">
-        © 2025 Marktplatz GmbH. Alle Rechte vorbehalten.
-      </div>
+    <div style="max-width: 1200px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid #444; display: flex; justify-content: space-between;">
+      <div data-lang-key="footer_copyright">© 2025 ProduktDE GmbH. Alle Rechte vorbehalten.</div>
       <div style="display: flex; gap: 1rem;">
-        <a href="https://facebook.com"><i class="fab fa-facebook-f" style="color: #aaa;"></i></a>
-        <a href="https://instagram.com"><i class="fab fa-instagram" style="color: #aaa;"></i></a>
-        <a href="https://twitter.com"><i class="fab fa-twitter" style="color: #aaa;"></i></a>
+        <a href="https://facebook.com"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
   </footer>
 
-  <!-- JavaScript for Preloader, Language Switcher, Cart, and Search Suggestions -->
-  <script>
-    // Language Data
-    const translations = {
-      de: {
-        search_placeholder: "Was suchen Sie heute?",
-        account: "Mein Konto",
-        cart: "Warenkorb",
-        hero_title: "Sommerschlussverkauf",
-        hero_subtitle: "Bis zu 50% Rabatt auf ausgewählte Artikel",
-        hero_cta: "Jetzt entdecken",
-        bestsellers_title: "Bestseller — Made in Germany",
-        product_bosch_washer_title: "Bosch Serie 6 Waschmaschine",
-        product_bosch_washer_desc: "Kostenloser Versand • Made in Germany",
-        product_wmf_cookware_title: "WMF Provence Plus Topfset 5-teilig",
-        product_wmf_cookware_desc: "Versand in 1-2 Tagen • Made in Germany",
-        product_siemens_coffee_title: "Siemens EQ.700 Kaffeevollautomat",
-        product_siemens_coffee_desc: "Kostenloser Versand • Made in Germany",
-        product_ritter_chocolate_title: "Ritter Sport Knusperkeks Schokolade",
-        product_ritter_chocolate_desc: "Versand in 1-2 Tagen • Made in Germany",
-        product_miele_vacuum_title: "Miele Complete C3 Staubsauger",
-        product_miele_vacuum_desc: "Kostenloser Versand • Made in Germany",
-        product_nivea_creme_title: "Nivea Creme",
-        product_nivea_creme_desc: "Versand in 1-2 Tagen • Made in Germany",
-        product_oetker_pizza_title: "Dr. Oetker Ristorante Pizza",
-        product_oetker_pizza_desc: "Versand in 1-2 Tagen • Made in Germany",
-        product_fissler_skillet_title: "Fissler Vitaquick Bratpfanne",
-        product_fissler_skillet_desc: "Kostenloser Versand • Made in Germany",
-        product_braun_mixer_title: "Braun MultiQuick 7 Handmixer",
-        product_braun_mixer_desc: "Versand in 1-2 Tagen • Made in Germany",
-        product_aeg_dishwasher_title: "AEG FSB53617Z Geschirrspüler",
-        product_aeg_dishwasher_desc: "Kostenloser Versand • Made in Germany",
-        buy_now: "Jetzt kaufen",
-        footer_shop: "Einkaufen",
-        footer_all_categories: "Alle Kategorien",
-        footer_offers: "Angebote",
-        footer_new_arrivals: "Neuheiten",
-        footer_service: "Service",
-        footer_customer_service: "Kundenservice",
-        footer_returns: "Rückgabe",
-        footer_shipping: "Versand",
-        footer_company: "Unternehmen",
-        footer_about_us: "Über uns",
-        footer_careers: "Karriere",
-        footer_press: "Presse",
-        footer_legal: "Rechtliches",
-        footer_terms: "AGB",
-        footer_privacy: "Datenschutz",
-        footer_imprint: "Impressum",
-        footer_copyright: "© 2025 Marktplatz GmbH. Alle Rechte vorbehalten."
-      },
-      en: {
-        search_placeholder: "What are you looking for today?",
-        account: "My Account",
-        cart: "Cart",
-        hero_title: "Summer Sale",
-        hero_subtitle: "Up to 50% off on selected items",
-        hero_cta: "Discover Now",
-        bestsellers_title: "Bestsellers — Made in Germany",
-        product_bosch_washer_title: "Bosch Serie 6 Washing Machine",
-        product_bosch_washer_desc: "Free Shipping • Made in Germany",
-        product_wmf_cookware_title: "WMF Provence Plus 5-Piece Cookware Set",
-        product_wmf_cookware_desc: "Shipping in 1-2 Days • Made in Germany",
-        product_siemens_coffee_title: "Siemens EQ.700 Coffee Machine",
-        product_siemens_coffee_desc: "Free Shipping • Made in Germany",
-        product_ritter_chocolate_title: "Ritter Sport Knusperkeks Chocolate",
-        product_ritter_chocolate_desc: "Shipping in 1-2 Days • Made in Germany",
-        product_miele_vacuum_title: "Miele Complete C3 Vacuum Cleaner",
-        product_miele_vacuum_desc: "Free Shipping • Made in Germany",
-        product_nivea_creme_title: "Nivea Creme",
-        product_nivea_creme_desc: "Shipping in 1-2 Days • Made in Germany",
-        product_oetker_pizza_title: "Dr. Oetker Ristorante Pizza",
-        product_oetker_pizza_desc: "Shipping in 1-2 Days • Made in Germany",
-        product_fissler_skillet_title: "Fissler Vitaquick Skillet",
-        product_fissler_skillet_desc: "Free Shipping • Made in Germany",
-        product_braun_mixer_title: "Braun MultiQuick 7 Hand Mixer",
-        product_braun_mixer_desc: "Shipping in 1-2 Days • Made in Germany",
-        product_aeg_dishwasher_title: "AEG FSB53617Z Dishwasher",
-        product_aeg_dishwasher_desc: "Free Shipping • Made in Germany",
-        buy_now: "Buy Now",
-        footer_shop: "Shop",
-        footer_all_categories: "All Categories",
-        footer_offers: "Offers",
-        footer_new_arrivals: "New Arrivals",
-        footer_service: "Service",
-        footer_customer_service: "Customer Service",
-        footer_returns: "Returns",
-        footer_shipping: "Shipping",
-        footer_company: "Company",
-        footer_about_us: "About Us",
-        footer_careers: "Careers",
-        footer_press: "Press",
-        footer_legal: "Legal",
-        footer_terms: "Terms & Conditions",
-        footer_privacy: "Privacy Policy",
-        footer_imprint: "Imprint",
-        footer_copyright: "© 2025 Marktplatz GmbH. All rights reserved."
-      }
-    };
-
-    // Preloader
-    window.addEventListener('load', () => {
-      const preloader = document.querySelector('.preloader');
-      preloader.classList.add('hidden');
-    });
-
-    // Language Switcher
-    const languageButtons = document.querySelectorAll('.language-btn');
-    const translatableElements = document.querySelectorAll('[data-lang-key]');
-
-    function setLanguage(lang) {
-      translatableElements.forEach(element => {
-        const key = element.getAttribute('data-lang-key');
-        if (translations[lang][key]) {
-          element.textContent = translations[lang][key];
-        }
-      });
-
-      // Update placeholder for search input
-      const searchInput = document.querySelector('.search-input');
-      searchInput.placeholder = translations[lang].search_placeholder;
-
-      // Update HTML lang attribute
-      document.documentElement.lang = lang;
-
-      // Update active button
-      languageButtons.forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-      });
-    }
-
-    languageButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const lang = button.getAttribute('data-lang');
-        setLanguage(lang);
-      });
-    });
-
-    // Basic Cart Functionality
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    function addToCart(product) {
-      cart.push(product);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(translations[document.documentElement.lang].cart + ' updated!');
-    }
-
-    document.querySelectorAll('.btn-primary').forEach(button => {
-      button.addEventListener('click', (e) => {
-        const productCard = e.target.closest('.product-card');
-        const product = {
-          name: productCard.querySelector('h3').textContent,
-          price: productCard.querySelector('.price').textContent,
-          url: e.target.href
-        };
-        addToCart(product);
-      });
-    });
-
-    // Search Suggestions
-    const searchInput = document.querySelector('.search-input');
-    const suggestions = [
-      'Bosch Waschmaschine',
-      'WMF Topfset',
-      'Siemens Kaffeevollautomat',
-      'Ritter Sport Schokolade',
-      'Miele Staubsauger',
-      'Nivea Creme',
-      'Dr. Oetker Pizza',
-      'Fissler Bratpfanne',
-      'Braun Handmixer',
-      'AEG Geschirrspüler'
-    ];
-    const datalist = document.getElementById('search-suggestions');
-
-    searchInput.addEventListener('input', (e) => {
-      const query = e.target.value.toLowerCase();
-      datalist.innerHTML = '';
-      if (query) {
-        suggestions
-          .filter(item => item.toLowerCase().includes(query))
-          .forEach(item => {
-            const option = document.createElement('option');
-            option.value = item;
-            datalist.appendChild(option);
-          });
-      }
-    });
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
