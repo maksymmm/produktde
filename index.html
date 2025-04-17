@@ -13,7 +13,7 @@
   <meta property="og:title" content="Marktplatz — Deutschlands größter Online-Marktplatz">
   <meta property="og:description" content="Über 1 Million Produkte von deutschen Herstellern. Kostenloser Versand ab 50€.">
   <meta property="og:image" content="https://via.placeholder.com/1200x630">
-  <meta property="og:url" content="https://example.com">
+  <meta property="og:url" content="https://marktplatz.de">
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
@@ -128,7 +128,7 @@
       min-height: 500px;
       background: 
         linear-gradient(135deg, rgba(74,43,130,0.8) 0%, rgba(93,61,158,0.9) 100%),
-        url('https://via.placeholder.com/1920x1080') center/cover no-repeat;
+        url('https://via.placeholder.com/1920x1080?text=Hero+Banner') center/cover no-repeat;
       display: flex;
       align-items: center;
       color: white;
@@ -188,6 +188,8 @@
       text-decoration: none;
       display: block;
       text-align: center;
+      padding: 0.75rem;
+      border-radius: 6px;
     }
 
     .btn-primary:hover {
@@ -226,11 +228,11 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Marktplatz",
-      "url": "https://example.com",
+      "url": "https://marktplatz.de",
       "description": "Deutschlands größter Online-Marktplatz mit über 1 Million Produkten von deutschen Herstellern.",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://example.com/search?q={search_term_string}",
+        "target": "https://marktplatz.de/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
@@ -247,7 +249,7 @@
     <div class="header-container">
       <div class="logo">
         <a href="/">
-          <img src="https://via.placeholder.com/150x40" alt="Marktplatz Logo" loading="lazy">
+          <img src="https://via.placeholder.com/150x40?text=Marktplatz+Logo" alt="Marktplatz Logo" loading="lazy">
         </a>
       </div>
 
@@ -294,8 +296,8 @@
       <div class="image-gallery">
         <!-- Product 1: Bosch Washing Machine -->
         <div class="product-card">
-          <a href="https://www.bosch-home.de/produkte/waescherei/waschmaschinen/WAU28T40">
-            <img src="https://via.placeholder.com/300x250?text=Bosch+Waschmaschine" alt="Bosch Serie 6 Waschmaschine" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Image+Not+Found'">
+          <a href="https://www.amazon.de/Bosch-WAU28T40-Serie-Waschmaschine-Frontlader/dp/B08J8C7V5P">
+            <img src="https://m.media-amazon.com/images/I/71xQ1t3vW4L._AC_SL1500_.jpg" alt="Bosch Serie 6 Waschmaschine" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Bosch+Waschmaschine'">
           </a>
           <div style="padding: 1.5rem;">
             <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_bosch_washer_title">Bosch Serie 6 Waschmaschine</h3>
@@ -305,7 +307,7 @@
             <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_bosch_washer_desc">
               Kostenloser Versand • Made in Germany
             </div>
-            <a href="https://www.bosch-home.de/produkte/waescherei/waschmaschinen/WAU28T40" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
+            <a href="https://www.amazon.de/Bosch-WAU28T40-Serie-Waschmaschine-Frontlader/dp/B08J8C7V5P" class="btn btn-primary" data-lang-key="buy_now">
               Jetzt kaufen
             </a>
           </div>
@@ -313,8 +315,8 @@
 
         <!-- Product 2: WMF Cookware Set -->
         <div class="product-card">
-          <a href="https://www.wmf.com/de-de/produkte/kochen/topfsets/topfset-5-teilig-provence-plus.html">
-            <img src="https://via.placeholder.com/300x250?text=WMF+Topfset" alt="WMF Provence Plus Topfset" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Image+Not+Found'">
+          <a href="https://www.amazon.de/WMF-Provence-Topfset-5-teilig-Edelstahl/dp/B00008WWT2">
+            <img src="https://m.media-amazon.com/images/I/71vL8zB5J7L._AC_SL1500_.jpg" alt="WMF Provence Plus Topfset" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=WMF+Topfset'">
           </a>
           <div style="padding: 1.5rem;">
             <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_wmf_cookware_title">WMF Provence Plus Topfset 5-teilig</h3>
@@ -324,7 +326,7 @@
             <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_wmf_cookware_desc">
               Versand in 1-2 Tagen • Made in Germany
             </div>
-            <a href="https://www.wmf.com/de-de/produkte/kochen/topfsets/topfset-5-teilig-provence-plus.html" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
+            <a href="https://www.amazon.de/WMF-Provence-Topfset-5-teilig-Edelstahl/dp/B00008WWT2" class="btn btn-primary" data-lang-key="buy_now">
               Jetzt kaufen
             </a>
           </div>
@@ -332,8 +334,8 @@
 
         <!-- Product 3: Siemens Coffee Machine -->
         <div class="product-card">
-          <a href="https://www.siemens-home.bsh-group.com/de/produkte/kaffeevollautomaten/eq700-integral/TQ707D03">
-            <img src="https://via.placeholder.com/300x250?text=Siemens+Kaffeevollautomat" alt="Siemens EQ.700 Kaffeevollautomat" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Image+Not+Found'">
+          <a href="https://www.amazon.de/Siemens-EQ-700-Kaffeevollautomat-TQ707D03/dp/B09K4J7W9Q">
+            <img src="https://m.media-amazon.com/images/I/61pQz4J8L3L._AC_SL1500_.jpg" alt="Siemens EQ.700 Kaffeevollautomat" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Siemens+Kaffeevollautomat'">
           </a>
           <div style="padding: 1.5rem;">
             <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_siemens_coffee_title">Siemens EQ.700 Kaffeevollautomat</h3>
@@ -343,7 +345,7 @@
             <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_siemens_coffee_desc">
               Kostenloser Versand • Made in Germany
             </div>
-            <a href="https://www.siemens-home.bsh-group.com/de/produkte/kaffeevollautomaten/eq700-integral/TQ707D03" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
+            <a href="https://www.amazon.de/Siemens-EQ-700-Kaffeevollautomat-TQ707D03/dp/B09K4J7W9Q" class="btn btn-primary" data-lang-key="buy_now">
               Jetzt kaufen
             </a>
           </div>
@@ -351,8 +353,8 @@
 
         <!-- Product 4: Ritter Sport Chocolate -->
         <div class="product-card">
-          <a href="https://www.ritter-sport.de/de/produkte/100g-tafeln/knusperkeks">
-            <img src="https://via.placeholder.com/300x250?text=Ritter+Sport+Schokolade" alt="Ritter Sport Knusperkeks Schokolade" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Image+Not+Found'">
+          <a href="https://www.amazon.de/Ritter-Sport-Knusperkeks-Schokolade-100g/dp/B0000504ZQ">
+            <img src="https://m.media-amazon.com/images/I/51xZ7vY8L2L._AC_SL1000_.jpg" alt="Ritter Sport Knusperkeks Schokolade" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Ritter+Sport+Schokolade'">
           </a>
           <div style="padding: 1.5rem;">
             <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_ritter_chocolate_title">Ritter Sport Knusperkeks Schokolade</h3>
@@ -362,7 +364,7 @@
             <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_ritter_chocolate_desc">
               Versand in 1-2 Tagen • Made in Germany
             </div>
-            <a href="https://www.ritter-sport.de/de/produkte/100g-tafeln/knusperkeks" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
+            <a href="https://www.amazon.de/Ritter-Sport-Knusperkeks-Schokolade-100g/dp/B0000504ZQ" class="btn btn-primary" data-lang-key="buy_now">
               Jetzt kaufen
             </a>
           </div>
@@ -370,8 +372,8 @@
 
         <!-- Product 5: Miele Vacuum Cleaner -->
         <div class="product-card">
-          <a href="https://www.miele.de/de/staubsauger/bodenstaubsauger/complete-c3-active-8901230.html">
-            <img src="https://via.placeholder.com/300x250?text=Miele+Staubsauger" alt="Miele Complete C3 Staubsauger" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Image+Not+Found'">
+          <a href="https://www.amazon.de/Miele-Complete-C3-Staubsauger-PowerLine/dp/B08F7X4Y7P">
+            <img src="https://m.media-amazon.com/images/I/71qX8Z5J7YL._AC_SL1500_.jpg" alt="Miele Complete C3 Staubsauger" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Miele+Staubsauger'">
           </a>
           <div style="padding: 1.5rem;">
             <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_miele_vacuum_title">Miele Complete C3 Staubsauger</h3>
@@ -381,7 +383,7 @@
             <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_miele_vacuum_desc">
               Kostenloser Versand • Made in Germany
             </div>
-            <a href="https://www.miele.de/de/staubsauger/bodenstaubsauger/complete-c3-active-8901230.html" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
+            <a href="https://www.amazon.de/Miele-Complete-C3-Staubsauger-PowerLine/dp/B08F7X4Y7P" class="btn btn-primary" data-lang-key="buy_now">
               Jetzt kaufen
             </a>
           </div>
@@ -389,8 +391,8 @@
 
         <!-- Product 6: Nivea Creme -->
         <div class="product-card">
-          <a href="https://www.nivea.de/produkte/creme">
-            <img src="https://via.placeholder.com/300x250?text=Nivea+Creme" alt="Nivea Creme" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Image+Not+Found'">
+          <a href="https://www.amazon.de/NIVEA-Creme-250-ml/dp/B0000507ZQ">
+            <img src="https://m.media-amazon.com/images/I/61vY8Z5J7YL._AC_SL1500_.jpg" alt="Nivea Creme" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Nivea+Creme'">
           </a>
           <div style="padding: 1.5rem;">
             <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_nivea_creme_title">Nivea Creme</h3>
@@ -398,9 +400,9 @@
               € 3,99
             </div>
             <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_nivea_creme_desc">
-              Versand in 1-2 Tagen ?>/home/user/public_html/index.html • Made in Germany
+              Versand in 1-2 Tagen • Made in Germany
             </div>
-            <a href="https://www.nivea.de/produkte/creme" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
+            <a href="https://www.amazon.de/NIVEA-Creme-250-ml/dp/B0000507ZQ" class="btn btn-primary" data-lang-key="buy_now">
               Jetzt kaufen
             </a>
           </div>
@@ -408,8 +410,8 @@
 
         <!-- Product 7: Dr. Oetker Pizza -->
         <div class="product-card">
-          <a href="https://www.oetker.de/de-de/produkte/pizza-ristorante">
-            <img src="https://via.placeholder.com/300x250?text=Dr+Oetker+Pizza" alt="Dr. Oetker Ristorante Pizza" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Image+Not+Found'">
+          <a href="https://www.amazon.de/Dr-Oetker-Ristorante-Pizza-Margherita/dp/B0000507ZR">
+            <img src="https://m.media-amazon.com/images/I/51xY8Z5J7YL._AC_SL1000_.jpg" alt="Dr. Oetker Ristorante Pizza" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Dr+Oetker+Pizza'">
           </a>
           <div style="padding: 1.5rem;">
             <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_oetker_pizza_title">Dr. Oetker Ristorante Pizza</h3>
@@ -419,7 +421,7 @@
             <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_oetker_pizza_desc">
               Versand in 1-2 Tagen • Made in Germany
             </div>
-            <a href="https://www.oetker.de/de-de/produkte/pizza-ristorante" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
+            <a href="https://www.amazon.de/Dr-Oetker-Ristorante-Pizza-Margherita/dp/B0000507ZR" class="btn btn-primary" data-lang-key="buy_now">
               Jetzt kaufen
             </a>
           </div>
@@ -427,8 +429,8 @@
 
         <!-- Product 8: Fissler Skillet -->
         <div class="product-card">
-          <a href="https://www.fissler.com/de/produkte/bratpfannen/vitaquick-premium">
-            <img src="https://via.placeholder.com/300x250?text=Fissler+Bratpfanne" alt="Fissler Vitaquick Bratpfanne" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Image+Not+Found'">
+          <a href="https://www.amazon.de/Fissler-Vitaquick-Bratpfanne-28cm/dp/B07F8X4Y7Q">
+            <img src="https://m.media-amazon.com/images/I/71qX8Z5J7YL._AC_SL1500_.jpg" alt="Fissler Vitaquick Bratpfanne" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Fissler+Bratpfanne'">
           </a>
           <div style="padding: 1.5rem;">
             <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_fissler_skillet_title">Fissler Vitaquick Bratpfanne</h3>
@@ -438,7 +440,7 @@
             <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_fissler_skillet_desc">
               Kostenloser Versand • Made in Germany
             </div>
-            <a href="https://www.fissler.com/de/produkte/bratpfannen/vitaquick-premium" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
+            <a href="https://www.amazon.de/Fissler-Vitaquick-Bratpfanne-28cm/dp/B07F8X4Y7Q" class="btn btn-primary" data-lang-key="buy_now">
               Jetzt kaufen
             </a>
           </div>
@@ -446,8 +448,8 @@
 
         <!-- Product 9: Braun Hand Mixer -->
         <div class="product-card">
-          <a href="https://www.braunhousehold.com/de-de/produkte/kuechenmaschinen/handmixer/multiquick-7">
-            <img src="https://via.placeholder.com/300x250?text=Braun+Handmixer" alt="Braun MultiQuick 7 Handmixer" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Image+Not+Found'">
+          <a href="https://www.amazon.de/Braun-MultiQuick-7-Handmixer/dp/B08F7X4Y7R">
+            <img src="https://m.media-amazon.com/images/I/61vY8Z5J7YL._AC_SL1500_.jpg" alt="Braun MultiQuick 7 Handmixer" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Braun+Handmixer'">
           </a>
           <div style="padding: 1.5rem;">
             <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_braun_mixer_title">Braun MultiQuick 7 Handmixer</h3>
@@ -457,7 +459,7 @@
             <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_braun_mixer_desc">
               Versand in 1-2 Tagen • Made in Germany
             </div>
-            <a href="https://www.braunhousehold.com/de-de/produkte/kuechenmaschinen/handmixer/multiquick-7" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
+            <a href="https://www.amazon.de/Braun-MultiQuick-7-Handmixer/dp/B08F7X4Y7R" class="btn btn-primary" data-lang-key="buy_now">
               Jetzt kaufen
             </a>
           </div>
@@ -465,8 +467,8 @@
 
         <!-- Product 10: AEG Dishwasher -->
         <div class="product-card">
-          <a href="https://www.aeg.de/kitchen/dishwashers/freestanding-dishwasher/fsb53617z/">
-            <img src="https://via.placeholder.com/300x250?text=AEG+Geschirrspueler" alt="AEG FSB53617Z Geschirrspüler" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=Image+Not+Found'">
+          <a href="https://www.amazon.de/AEG-FSB53617Z-Geschirrsp%C3%BCler-Standger%C3%A4t/dp/B09K4J7W9R">
+            <img src="https://m.media-amazon.com/images/I/71qX8Z5J7YL._AC_SL1500_.jpg" alt="AEG FSB53617Z Geschirrspüler" class="gallery-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x250?text=AEG+Geschirrspueler'">
           </a>
           <div style="padding: 1.5rem;">
             <h3 style="margin-bottom: 0.5rem;" data-lang-key="product_aeg_dishwasher_title">AEG FSB53617Z Geschirrspüler</h3>
@@ -476,7 +478,7 @@
             <div style="color: var(--gray); margin-bottom: 1rem;" data-lang-key="product_aeg_dishwasher_desc">
               Kostenloser Versand • Made in Germany
             </div>
-            <a href="https://www.aeg.de/kitchen/dishwashers/freestanding-dishwasher/fsb53617z/" class="btn btn-primary" style="padding: 0.75rem; border-radius: 6px;" data-lang-key="buy_now">
+            <a href="https://www.amazon.de/AEG-FSB53617Z-Geschirrsp%C3%BCler-Standger%C3%A4t/dp/B09K4J7W9R" class="btn btn-primary" data-lang-key="buy_now">
               Jetzt kaufen
             </a>
           </div>
@@ -533,7 +535,7 @@
     </div>
   </footer>
 
-  <!-- JavaScript for Preloader, Language Switcher, and Search Suggestions -->
+  <!-- JavaScript for Preloader, Language Switcher, Cart, and Search Suggestions -->
   <script>
     // Language Data
     const translations = {
@@ -668,6 +670,26 @@
       button.addEventListener('click', () => {
         const lang = button.getAttribute('data-lang');
         setLanguage(lang);
+      });
+    });
+
+    // Basic Cart Functionality
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    function addToCart(product) {
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(translations[document.documentElement.lang].cart + ' updated!');
+    }
+
+    document.querySelectorAll('.btn-primary').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const productCard = e.target.closest('.product-card');
+        const product = {
+          name: productCard.querySelector('h3').textContent,
+          price: productCard.querySelector('.price').textContent,
+          url: e.target.href
+        };
+        addToCart(product);
       });
     });
 
